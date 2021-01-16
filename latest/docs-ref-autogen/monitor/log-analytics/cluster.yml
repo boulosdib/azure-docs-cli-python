@@ -1,0 +1,273 @@
+### YamlMime:AzureCLIGroup
+uid: az_monitor_log_analytics_cluster
+name: az monitor log-analytics cluster
+summary: Manage Azure log analytics cluster.
+description: ''
+directCommands:
+- uid: az_monitor_log_analytics_cluster_create
+  name: az monitor log-analytics cluster create
+  summary: Create a cluster instance.
+  description: ''
+  syntax: >-
+    az monitor log-analytics cluster create --name
+                                            --resource-group
+                                            --sku-capacity
+                                            [--identity-type]
+                                            [--location]
+                                            [--no-wait]
+                                            [--sku-name]
+                                            [--subscription]
+                                            [--tags]
+  examples:
+  - summary: Create a cluster instance.
+    syntax: az monitor log-analytics cluster create -g MyResourceGroup -n MyCluster --sku-capacity 1000
+  requiredParameters:
+  - isRequired: true
+    name: --name -n
+    summary: The name of the Log Analytics cluster.
+    description: ''
+  - isRequired: true
+    name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - isRequired: true
+    name: --sku-capacity
+    summary: The capacity of the SKU. It must be in the range of 1000-2000 per day and must be in multiples of 100. If you want to increase the limit, please contact LAIngestionRate@microsoft.com. It can be decreased only after 31 days.
+    description: ''
+  optionalParameters:
+  - name: --identity-type
+    defaultValue: SystemAssigned
+    summary: 'The identity type. Supported values: SystemAssigned.'
+    description: ''
+  - name: --location -l
+    summary: 'Location. Values from: `az account list-locations`. You can configure the default location using `az configure --defaults location=<location>`.'
+    description: ''
+  - name: --no-wait
+    summary: Do not wait for the long-running operation to finish.
+    description: ''
+  - name: --sku-name
+    defaultValue: CapacityReservation
+    summary: The name of the SKU. Currently only support 'CapacityReservation'.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  - name: --tags
+    summary: 'Space-separated tags: key[=value] [key[=value] ...]. Use "" to clear existing tags.'
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/monitor/_help.py
+- uid: az_monitor_log_analytics_cluster_delete
+  name: az monitor log-analytics cluster delete
+  summary: Delete a cluster instance.
+  description: ''
+  syntax: >-
+    az monitor log-analytics cluster delete --name
+                                            --resource-group
+                                            [--no-wait]
+                                            [--subscription]
+                                            [--yes]
+  examples:
+  - summary: Delete a cluster instance.
+    syntax: az monitor log-analytics cluster delete -g MyResourceGroup -n MyCluster
+  requiredParameters:
+  - isRequired: true
+    name: --name -n
+    summary: The name of the Log Analytics cluster.
+    description: ''
+  - isRequired: true
+    name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  optionalParameters:
+  - name: --no-wait
+    summary: Do not wait for the long-running operation to finish.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  - name: --yes -y
+    summary: Do not prompt for confirmation.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/monitor/_help.py
+- uid: az_monitor_log_analytics_cluster_list
+  name: az monitor log-analytics cluster list
+  summary: Gets all cluster instances in a resource group or in current subscription.
+  description: ''
+  syntax: >-
+    az monitor log-analytics cluster list [--query-examples]
+                                          [--resource-group]
+                                          [--subscription]
+  examples:
+  - summary: Gets all cluster instances in a resource group.
+    syntax: az monitor log-analytics cluster list -g MyResourceGroup
+  - summary: Gets all cluster instances in current subscription.
+    syntax: az monitor log-analytics cluster list
+  optionalParameters:
+  - name: --query-examples
+    summary: Recommend JMESPath string for you. You can copy one of the query and paste it after --query parameter within double quotation marks to see the results. You can add one or more positional keywords so that we can give suggestions based on these key words.
+    description: ''
+  - name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/monitor/_help.py
+- uid: az_monitor_log_analytics_cluster_show
+  name: az monitor log-analytics cluster show
+  summary: Show the properties of a cluster instance.
+  description: ''
+  syntax: >-
+    az monitor log-analytics cluster show --name
+                                          --resource-group
+                                          [--query-examples]
+                                          [--subscription]
+  examples:
+  - summary: Show the properties of a cluster instance.
+    syntax: az monitor log-analytics cluster show -g MyResourceGroup -n MyCluster
+  requiredParameters:
+  - isRequired: true
+    name: --name -n
+    summary: The name of the Log Analytics cluster.
+    description: ''
+  - isRequired: true
+    name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  optionalParameters:
+  - name: --query-examples
+    summary: Recommend JMESPath string for you. You can copy one of the query and paste it after --query parameter within double quotation marks to see the results. You can add one or more positional keywords so that we can give suggestions based on these key words.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/monitor/_help.py
+- uid: az_monitor_log_analytics_cluster_update
+  name: az monitor log-analytics cluster update
+  summary: Update a cluster instance.
+  description: ''
+  syntax: >-
+    az monitor log-analytics cluster update --name
+                                            --resource-group
+                                            [--key-name]
+                                            [--key-vault-uri]
+                                            [--key-version]
+                                            [--sku-capacity]
+                                            [--subscription]
+                                            [--tags]
+  examples:
+  - summary: Update a cluster instance.
+    syntax: >-
+      az monitor log-analytics cluster update -g MyResourceGroup -n MyCluster \
+        --key-vault-uri https://myvault.vault.azure.net/ --key-name my-key \
+        --key-version fe0adcedd8014aed9c22e9aefb81a1ds --sku-capacity 1000
+  requiredParameters:
+  - isRequired: true
+    name: --name -n
+    summary: The name of the Log Analytics cluster.
+    description: ''
+  - isRequired: true
+    name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  optionalParameters:
+  - name: --key-name
+    summary: The name of the key associated with the Log Analytics cluster.
+    description: ''
+  - name: --key-vault-uri
+    summary: The Key Vault uri which holds the key associated with the Log Analytics cluster.
+    description: ''
+  - name: --key-version
+    summary: The version of the key associated with the Log Analytics cluster.
+    description: ''
+  - name: --sku-capacity
+    summary: The capacity of the SKU. It must be in the range of 1000-2000 per day and must be in multiples of 100. If you want to increase the limit, please contact LAIngestionRate@microsoft.com. It can be decreased only after 31 days.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  - name: --tags
+    summary: 'Space-separated tags: key[=value] [key[=value] ...]. Use "" to clear existing tags.'
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/monitor/_help.py
+- uid: az_monitor_log_analytics_cluster_wait
+  name: az monitor log-analytics cluster wait
+  summary: Place the CLI in a waiting state until a condition of the cluster is met.
+  description: ''
+  syntax: >-
+    az monitor log-analytics cluster wait --name
+                                          --resource-group
+                                          [--created]
+                                          [--custom]
+                                          [--deleted]
+                                          [--exists]
+                                          [--interval]
+                                          [--subscription]
+                                          [--timeout]
+                                          [--updated]
+  examples:
+  - summary: Pause executing next line of CLI script until the cluster is successfully provisioned.
+    syntax: az monitor log-analytics cluster wait -n MyCluster -g MyResourceGroup --created
+  requiredParameters:
+  - isRequired: true
+    name: --name -n
+    summary: The name of the Log Analytics cluster.
+    description: ''
+  - isRequired: true
+    name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  optionalParameters:
+  - name: --created
+    summary: Wait until created with 'provisioningState' at 'Succeeded'.
+    description: ''
+  - name: --custom
+    summary: Wait until the condition satisfies a custom JMESPath query. E.g. provisioningState!='InProgress', instanceView.statuses[?code=='PowerState/running'].
+    description: ''
+  - name: --deleted
+    summary: Wait until deleted.
+    description: ''
+  - name: --exists
+    summary: Wait until the resource exists.
+    description: ''
+  - name: --interval
+    defaultValue: "30"
+    summary: Polling interval in seconds.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  - name: --timeout
+    defaultValue: "3600"
+    summary: Maximum wait in seconds.
+    description: ''
+  - name: --updated
+    summary: Wait until updated with provisioningState at 'Succeeded'.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/monitor/_help.py
+commands:
+- az_monitor_log_analytics_cluster_create
+- az_monitor_log_analytics_cluster_delete
+- az_monitor_log_analytics_cluster_list
+- az_monitor_log_analytics_cluster_show
+- az_monitor_log_analytics_cluster_update
+- az_monitor_log_analytics_cluster_wait
+globalParameters:
+- name: --debug
+  summary: Increase logging verbosity to show all debug logs.
+- name: --help -h
+  summary: Show this help message and exit.
+- name: --only-show-errors
+  summary: Only show errors, suppressing warnings.
+- name: --output -o
+  defaultValue: json
+  parameterValueGroup: json, jsonc, table, tsv
+  summary: Output format.
+- name: --query
+  summary: JMESPath query string. See <a href="http://jmespath.org/">http://jmespath.org/</a> for more information and examples.
+- name: --verbose
+  summary: Increase logging verbosity. Use --debug for full debug logs.
+metadata:
+  doc_source_url_repo: https://github.com/Azure/azure-cli/blob/dev/
+  ms.date: 12/14/2020
+  description: Manage Azure log analytics cluster.

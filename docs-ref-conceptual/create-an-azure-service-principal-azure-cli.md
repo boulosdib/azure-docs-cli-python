@@ -1,214 +1,257 @@
 ---
-title: Create an Azure service principal with Azure CLI 2.0
-description: Learn how to create a service principal for your app or service with Azure CLI 2.0.
-keywords: Azure CLI 2.0, Azure Active Directory, Azure Active directory, AD, RBAC
-author: rloutlaw
-ms.author: routlaw
-manager: douge
-ms.date: 02/27/2017
-ms.topic: article
-ms.prod: azure
-ms.technology: azure
+title: Use Azure service principals with Azure CLI
+description: Learn how to create and use service principals with Azure CLI.
+author: dbradish-microsoft
+ms.author: dbradish
+manager: barbkess
+ms.date: 02/15/2019
+ms.topic: conceptual
+ms.service: azure-cli
 ms.devlang: azurecli
-ms.service: multiple
-ms.assetid: fab89cb8-dac1-4e21-9d34-5eadd5213c05
+ms.custom: devx-track-azurecli
 ---
+# Create an Azure service principal with the Azure CLI
 
-# Create an Azure service principal with Azure CLI 2.0
+Automated tools that use Azure services should always have restricted permissions. Instead of having
+applications sign in as a fully privileged user, Azure offers service principals.
 
-If you plan to manage your app or service with Azure CLI 2.0,
-you should run it under an Azure Active Directory (AAD) service principal rather than your own credentials.
-This topic steps you through creating a security principal with Azure CLI 2.0.
+An Azure service principal is an identity created for use with
+applications, hosted services, and automated tools to access
+Azure resources. This access is restricted by the roles assigned
+to the service principal, giving you control over which resources
+can be accessed and at which level. For security reasons, it's
+always recommended to use service principals with automated
+tools rather than allowing them to log in with a user identity.
 
-> [!NOTE]
-> You can also create a service principal through the Azure portal.
-> Read [Use portal to create Active Directory application and service principal that can access resources](/azure/azure-resource-manager/resource-group-create-service-principal-portal) for more details.
+This article shows you the steps for creating, getting information about, and resetting a service principal with the Azure CLI.
 
-## What is a 'service principal'?
+## Create a service principal
 
-An Azure service principal is a security identity used by user-created apps, services, and automation tools to access specific Azure resources. Think of it as a 'user identity' (login and password or certificate) with a specific role, and tightly controlled permissions to access your resources. It only needs to be able to do specific things, unlike a general user identity. It improves security if you only grant it the minimum permissions level needed to perform its management tasks. 
-
-Right now, Azure CLI 2.0 only supports the creation of password-based authentication credentials. In this topic, we cover creating a service principal with a specific password, and optionally assigning specific roles to it.
-
-## Verify your own permission level
-
-First, you must have sufficient permissions in both your Azure Active Directory and your Azure subscription. Specifically, you must be able to create an app in the Active Directory, and assign a role to the service principal. 
-
-The easiest way to check whether your account has adequate permissions is through the portal. See [Check required permission in portal](/azure/azure-resource-manager/resource-group-create-service-principal-portal.md#required-permissions).
-
-## Create a service principal for your application
-
-You must have one of the following to identify the app you want to create a service principal for:
-
-  * The unique name or URI of your deployed app (such as "MyDemoWebApp" in the examples), or
-  * the Application ID, the unique GUID associated with your deployed app, service, or object
-
-These values identify your application when creating a service principal.
-
-### Get information about your application
-
-Get identity information about your application with the `az ad app list`.
-
-```azurecli
-az ad app list --display-name MyDemoWebApp
-```
-
-```json
-{
-    "appId": "a487e0c1-82af-47d9-9a0b-af184eb87646d",
-    "appPermissions": null,
-    "availableToOtherTenants": false,
-    "displayName": "MyDemoWebApp",
-    "homepage": "http://MyDemoWebApp.azurewebsites.net",
-    "identifierUris": [
-      "http://MyDemoWebApp"
-    ],
-    "objectId": "bd07205b-629f-4a2e-945e-1ee5dadf610b9",
-    "objectType": "Application",
-    "replyUrls": []
-  }
-```
-
-The `--display-name` option filters the returned list of apps to show those with `displayName` starting with MyDemoWebApp.
-
-### Create the service principal
-
-Use [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) to create the service principal. 
-
-```azurecli
-az ad sp create-for-rbac --name {appId} --password "{strong password}" 
-``` 
-
-```json
-{
-  "appId": "a487e0c1-82af-47d9-9a0b-af184eb87646d",
-  "displayName": "MyDemoWebApp",
-  "name": "http://MyDemoWebApp",
-  "password": {strong password},
-  "tenant": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
-}
-```
-
- > [!WARNING] 
- > Don't create an insecure password.  Follow the
- > [Azure AD password rules and restrictions](/azure/active-directory/active-directory-passwords-policy) guidance.
-
-### Get information about the service principal
-
-```azurecli
-az ad sp show --id a487e0c1-82af-47d9-9a0b-af184eb87646d
-```
-
-```json
-{
-  "appId": "a487e0c1-82af-47d9-9a0b-af184eb87646d",
-  "displayName": "MyDemoWebApp",
-  "objectId": "0ceae62e-1a1a-446f-aa56-2300d176659bde",
-  "objectType": "ServicePrincipal",
-  "servicePrincipalNames": [
-    "http://MyDemoWebApp",
-    "a487e0c1-82af-47d9-9a0b-af184eb87646d"
-  ]
-}
-```
-
-### Sign in using the service principal
-
-You can now log in as the new service principal for your app using the *appId* and *password* from `az ad sp show`.  Supply the *tenant* value from the results of `az ad sp create-for-rbac`.
-
-```azurecli
-az login --service-principal -u a487e0c1-82af-47d9-9a0b-af184eb87646d --password {password} --tenant {tenant}
-``` 
-
-You will see this output after a successful sign-on:
-
-```json
-[
-  {
-    "cloudName": "AzureCloud",
-    "id": "a487e0c1-82af-47d9-9a0b-af184eb87646d",
-    "isDefault": true,
-    "state": "Enabled",
-    "tenantId": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
-    "user": {
-      "name": "https://MyDemoWebApp",
-      "type": "servicePrincipal"
-    }
-  }
-]
-```
-
-Use the `id`, `password`, and `tenant` values as the credentials for running your app. 
-
-## Managing roles 
+Create a service principal with the [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) command. When creating a service principal, you choose the type of sign-in authentication it uses.
 
 > [!NOTE]
-> Azure Role-Based Access Control (RBAC) is a model for defining and managing roles for user and service principals.
-> Roles have sets of permissions associated with them,
-> which determine the resources a principal can read, access, write, or manage.
-> For more information on RBAC and roles, see [RBAC: Built-in roles](/azure/active-directory/role-based-access-built-in-roles).
+>
+> If your account doesn't have permission to create a service principal, `az ad sp create-for-rbac` will return an error message containing
+> "Insufficient privileges to complete the operation." Contact your Azure Active Directory admin to create a service principal.
 
-The Azure CLI 2.0 provides the following commands to manage role assignments:
+There are two types of authentication available for service principals: Password-based authentication, and certificate-based authentication.
 
-* [az role assignment list](/cli/azure/role/assignment#list)
-* [az role assignment create](/cli/azure/role/assignment#create)
-* [az role assignment delete](/cli/azure/role/assignment#delete)
+### Password-based authentication
 
-The default role for a service principal is **Contributor**. It may not be the best choice for an app's interactions with Azure services, given its broad permissions. The **Reader** role is more restrictive and is a good choice for read-only access. You can view details on role-specific permissions or create custom ones through the Azure portal.
+Without any authentication parameters, password-based authentication is used with a random password created for you.
 
-In this example, add the **Reader** role to our prior example, and delete the **Contributor**
-one:
+  ```azurecli-interactive
+  az ad sp create-for-rbac --name ServicePrincipalName
+  ```
 
-```azurecli
-az role assignment create --assignee a487e0c1-82af-47d9-9a0b-af184eb87646d --role Reader
-az role assignment delete --assignee a487e0c1-82af-47d9-9a0b-af184eb87646d --role Contributor
+> [!IMPORTANT]
+> As of Azure CLI 2.0.68, the `--password` parameter to create a service principal with a user-defined password
+> is __no longer supported__ to prevent the accidental use of weak passwords.
+
+The output for a service principal with password authentication includes the `password` key. __Make sure__ you copy this value - it can't be retrieved. If you forget the password, [reset the service principal credentials](#reset-credentials).
+
+The `appId` and `tenant` keys appear in the output of `az ad sp create-for-rbac` and are used in service principal authentication.
+Record their values, but they can be retrieved at any point with [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list).
+
+### Certificate-based authentication
+
+For certificate-based authentication, use the `--cert` argument. This argument requires that you hold an existing certificate. Make sure any tool that uses this service principal has access to the certificate's private key. Certificates should be in an ASCII format such as PEM, CER, or DER. Pass the certificate as a string, or use the `@path` format to load the certificate from a file.
+
+> [!NOTE]
+> When using a PEM file, the **CERTIFICATE** must be appended to the **PRIVATE KEY** within the file.
+
+```azurecli-interactive
+az ad sp create-for-rbac --name ServicePrincipalName --cert "-----BEGIN CERTIFICATE-----
+...
+-----END CERTIFICATE-----"
 ```
 
-Verify the changes by listing the currently assigned roles:
-
-```azurecli
-az role assignment list --assignee a487e0c1-82af-47d9-9a0b-af184eb87646d
+```azurecli-interactive
+az ad sp create-for-rbac --name ServicePrincipalName --cert @/path/to/cert.pem
 ```
 
-```json
+The `--keyvault` argument can be added to use a certificate in Azure Key Vault. In this case, the `--cert` value is the name of the certificate.
+
+```azurecli-interactive
+az ad sp create-for-rbac --name ServicePrincipalName --cert CertName --keyvault VaultName
+```
+
+To create a _self-signed_ certificate for authentication, use the `--create-cert` argument:
+
+```azurecli-interactive
+az ad sp create-for-rbac --name ServicePrincipalName --create-cert
+```
+
+Console output:
+
+```
+Creating a role assignment under the scope of "/subscriptions/myId"
+Please copy C:\myPath\myNewFile.pem to a safe place.
+When you run 'az login', provide the file path in the --password argument
 {
-    "id": "/subscriptions/34345f33-0398-4a99-a42b-f6613d1664ac/providers/Microsoft.Authorization/roleAssignments/c27f78a7-9d3b-404b-ab59-47818f9af9ac",
-    "name": "c27f78a7-9d3b-404b-ab59-47818f9af9ac",
-    "properties": {
-      "principalId": "790525226-46f9-4051-b439-7079e41dfa31",
-      "principalName": "http://MyDemoWebApp",
-      "roleDefinitionId": "/subscriptions/34345f33-0398-4a99-a42b-f6613d1664ac/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7",
-      "roleDefinitionName": "Reader",
-      "scope": "/subscriptions/34345f33-0398-4a99-a42b-f6613d1664ac"
-    },
-    "type": "Microsoft.Authorization/roleAssignments"
+  "appId": "myAppId",
+  "displayName": "myDisplayName",
+  "fileWithCertAndPrivateKey": "C:\\myPath\\myNewFile.pem",
+  "name": "http://myName",
+  "password": null,
+  "tenant": "myTenantId"
 }
 ```
 
-> [!NOTE] 
-> If your account does not have sufficient permissions to assign a role, you see an error message.
-> The message states your account "does not have authorization to perform action
-> 'Microsoft.Authorization/roleAssignments/write' over scope '/subscriptions/{guid}'."
-   
-## Change the credentials of a security principal
-
-It's a good security practice to review permissions and update passwords regularly. You may also want to manage and modify the security credentials as your app changes.
-
-### Reset a service principal password
-
-Use `az ad sp reset-credentials` to reset the current password for the service principal.
-
-```azurecli
-az ad sp reset-credentials --name 20bce7de-3cd7-49f4-ab64-bb5b443838c3 --password {new-password}
+Contents of the new PEM file:
+```
+-----BEGIN PRIVATE KEY-----
+myPrivateKeyValue
+-----END PRIVATE KEY-----
+-----BEGIN CERTIFICATE-----
+myCertificateValue
+-----END CERTIFICATE-----
 ```
 
-```json
-{
-  "appId": "a487e0c1-82af-47d9-9a0b-af184eb87646d",
-  "name": "a487e0c1-82af-47d9-9a0b-af184eb87646d",
-  "password": {new-password},
-  "tenant": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
-}
+> [!NOTE]
+> The `az ad sp create-for-rbac --create-cert` command creates the service principal and a PEM file. The PEM file contains a correctly formatted **PRIVATE KEY** and **CERTIFICATE**.
+
+The `--keyvault` argument can be added to store the certificate in Azure Key Vault. When using `--keyvault`, the `--cert` argument is __required__.
+
+```azurecli-interactive
+az ad sp create-for-rbac --name ServicePrincipalName --create-cert --cert CertName --keyvault VaultName
 ```
 
-The CLI generates a secure password if you leave out the `--password` option.
+Unless you store the certificate in Key Vault, the output includes the `fileWithCertAndPrivateKey` key. This key's value tells you where the generated certificate is stored.
+__Make sure__ that you copy the certificate to a secure location, or you can't sign in with this service principal.
+
+For certificates stored in Key Vault, retrieve the certificate's private key with [az keyvault secret show](/cli/azure/keyvault/secret#az-keyvault-secret-show). In Key Vault, the name of the certificate's secret
+is the same as the certificate name. If you lose access to a certificate's private key, [reset the service principal credentials](#reset-credentials).
+
+The `appId` and `tenant` keys appear in the output of `az ad sp create-for-rbac` and are used in service principal authentication.
+Record their values, but they can be retrieved at any point with [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list).
+
+## Get an existing service principal
+
+A list of the service principals in a tenant can be retrieved with [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list). By default this
+command returns the first 100 service principals for your tenant. To get all of a tenant's service principals, use the `--all` argument. Getting this list can take a long time, so it's
+recommended that you filter the list with one of the following arguments:
+
+* `--display-name` requests service principals that have a _prefix_ that match the provided name. The display name of a service principal is the value set with the `--name`
+  parameter during creation. If you didn't set `--name` during service principal creation, the name prefix is `azure-cli-`.
+* `--spn` filters on exact service principal name matching. The service principal name always starts with `https://`.
+  if the value you used for `--name` wasn't a URI, this value is `https://` followed by the display name.
+* `--show-mine` requests only service principals created by the signed-in user.
+* `--filter` takes an OData filter, and performs _server-side_ filtering. This method is recommended over filtering client-side with the CLI's `--query` argument. To learn about OData filters, see [OData expression syntax for filters](/rest/api/searchservice/odata-expression-syntax-for-azure-search).
+
+The information returned for service principal objects is verbose. To get only the information necessary for sign-in, use the query string
+`[].{id:appId, tenant:appOwnerTenantId}`. For example, to get the sign-in information for all service principals created by the currently logged in user:
+
+```azurecli-interactive
+az ad sp list --show-mine --query "[].{id:appId, tenant:appOwnerTenantId}"
+```
+
+> [!IMPORTANT]
+>
+> `az ad sp list` or [az ad sp show](/cli/azure/ad/sp#az-ad-sp-show) get the user and tenant, but not any authentication secrets _or_ the authentication method.
+> Secrets for certificates in Key Vault can be retrieved with [az keyvault secret show](/cli/azure/keyvault/secret#az-keyvault-secret-show), but no other secrets are stored by default.
+> If you forget an authentication method or secret, [reset the service principal credentials](#reset-credentials).
+
+## Manage service principal roles
+
+The Azure CLI has the following commands to manage role assignments:
+
+* [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list)
+* [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create)
+* [az role assignment delete](/cli/azure/role/assignment#az-role-assignment-delete)
+
+The default role for a service principal is **Contributor**. This role has full permissions to read and write to an Azure account. The **Reader** role is more restrictive, with read-only access.  For more information on Role-Based Access Control (RBAC) and roles, see [RBAC: Built-in roles](/azure/active-directory/role-based-access-built-in-roles).
+
+This example adds the **Reader** role and removes the **Contributor** one:
+
+```azurecli-interactive
+az role assignment create --assignee APP_ID --role Reader
+az role assignment delete --assignee APP_ID --role Contributor
+```
+
+> [!NOTE]
+> If your account doesn't have permission to assign a role, you see an error message that your account "does not have authorization to
+> perform action 'Microsoft.Authorization/roleAssignments/write'." Contact your Azure Active Directory admin to manage roles.
+
+Adding a role _doesn't_ restrict previously assigned permissions. When restricting a service principal's permissions, the __Contributor__ role should be removed.
+
+The changes can be verified by listing the assigned roles:
+
+```azurecli-interactive
+az role assignment list --assignee APP_ID
+```
+
+## Sign in using a service principal
+
+Test the new service principal's credentials and permissions by signing in. To sign in with a service principal, you need the `appId`, `tenant`, and credentials.
+
+To sign in with a service principal using a password:
+
+```azurecli-interactive
+az login --service-principal --username APP_ID --password PASSWORD --tenant TENANT_ID
+```
+
+To sign in with a certificate, it must be available locally as a PEM or DER file, in ASCII format. When using a PEM file, the **PRIVATE KEY** and **CERTIFICATE** must be appended together within the file.
+
+```azurecli-interactive
+az login --service-principal --username APP_ID --tenant TENANT_ID --password /path/to/cert
+```
+
+To learn more about signing in with a service principal, see [Sign in with the Azure CLI](authenticate-azure-cli.md).
+
+## Create a resource using service principal
+
+The following section provides an example of how to create an resource for [Azure Storage](/azure/storage/) with a service principal, using the following commands:
+
+* [az login](/cli/azure/reference-index#az_login)
+* [az group create](/cli/azure/group#az_group_create)
+* [az storage account create](/cli/azure/storage/account#az_storage_account_create)
+* [az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list)
+
+To sign in with a service principal, you need the `appId`, `tenant`, and `password` returned as the response when you [created your service principal](#sign-in-using-a-service-principal).
+
+1. Log in as the service principal.
+
+    ```azurecli-interactive
+    az login --service-principal --username APP_ID --password PASSWORD --tenant TENANT_ID
+    ```
+
+1. Create a resource group to hold all resources used for the same quickstart, tutorial, or development project.
+
+    ```azurecli-interactive
+    az group create --location WESTUS --name MY_RESOURCE_GROUP
+    ```
+
+1. Create a resource to an Azure service. Replace `<SERVICENAME>` with the name of the Azure service.
+
+    For Azure Storage, valid values for the `<KIND>` parameter are:
+
+    * BlobStorage
+    * BlockBlobStorage
+    * FileStorage
+    * Storage
+    * StorageV2
+
+    ```azurecli-interactive
+    az storage account create --name MY_RESOURCE_<SERVICENAME> --resource-group MY_RESOURCE_GROUP --kind <KIND> --sku F0 --location WESTUS --yes
+    ```
+
+1. Get resource keys for the new resource, which you use in your code to authenticate to the Azure service.
+
+    ```azurecli-interactive
+    az storage account keys list --name MY_RESOURCE_<SERVICENAME> --resource-group MY_RESOURCE_GROUP
+    ```
+
+## Reset credentials
+
+If you forget the credentials for a service principal, use [az ad sp credential reset](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset). The reset command takes the same arguments
+as `az ad sp create-for-rbac`.
+
+```azurecli-interactive
+az ad sp credential reset --name APP_ID
+```
+
+## See also
+
+* [Application and service principal objects in Azure Active Directory](/azure/active-directory/develop/app-objects-and-service-principals)
+* [How to manage service principals](/azure/developer/python/how-to-manage-service-principals)

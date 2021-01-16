@@ -1,0 +1,195 @@
+### YamlMime:AzureCLIGroup
+uid: az_redis_firewall_rules
+name: az redis firewall-rules
+summary: Manage Redis firewall rules.
+description: ''
+directCommands:
+- uid: az_redis_firewall_rules_create
+  name: az redis firewall-rules create
+  summary: Create a redis cache firewall rule.
+  description: Usage example - az redis firewall-rules create --name testCacheName --resource-group testResourceGroup  --start-ip 10.10.10.10 --end-ip 20.20.20.20 --rule-name 10to20.
+  syntax: >-
+    az redis firewall-rules create --end-ip
+                                   --name
+                                   --resource-group
+                                   --rule-name
+                                   --start-ip
+                                   [--subscription]
+  requiredParameters:
+  - isRequired: true
+    name: --end-ip
+    summary: Highest IP address included in the range.
+    description: ''
+  - isRequired: true
+    name: --name -n
+    summary: Name of the Redis cache.
+    description: ''
+  - isRequired: true
+    name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - isRequired: true
+    name: --rule-name
+    summary: The name of the firewall rule.
+    description: ''
+  - isRequired: true
+    name: --start-ip
+    summary: Lowest IP address included in the range.
+    description: ''
+  optionalParameters:
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/redis/_help.py
+- uid: az_redis_firewall_rules_delete
+  name: az redis firewall-rules delete
+  summary: Deletes a single firewall rule in a specified redis cache.
+  description: ''
+  syntax: >-
+    az redis firewall-rules delete --rule-name
+                                   [--ids]
+                                   [--name]
+                                   [--resource-group]
+                                   [--subscription]
+  requiredParameters:
+  - isRequired: true
+    name: --rule-name
+    summary: The name of the firewall rule.
+    description: ''
+  optionalParameters:
+  - name: --ids
+    summary: One or more resource IDs (space-delimited). It should be a complete resource ID containing all information of 'Resource Id' arguments. You should provide either --ids or other 'Resource Id' arguments.
+    description: ''
+  - name: --name -n
+    summary: Name of the Redis cache.
+    description: ''
+  - name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/redis/_help.py
+- uid: az_redis_firewall_rules_list
+  name: az redis firewall-rules list
+  summary: Gets all firewall rules in the specified redis cache.
+  description: ''
+  syntax: >-
+    az redis firewall-rules list --name
+                                 --resource-group
+                                 [--query-examples]
+                                 [--subscription]
+  requiredParameters:
+  - isRequired: true
+    name: --name -n
+    summary: Name of the Redis cache.
+    description: ''
+  - isRequired: true
+    name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  optionalParameters:
+  - name: --query-examples
+    summary: Recommend JMESPath string for you. You can copy one of the query and paste it after --query parameter within double quotation marks to see the results. You can add one or more positional keywords so that we can give suggestions based on these key words.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/redis/_help.py
+- uid: az_redis_firewall_rules_show
+  name: az redis firewall-rules show
+  summary: Gets a single firewall rule in a specified redis cache.
+  description: ''
+  syntax: >-
+    az redis firewall-rules show --rule-name
+                                 [--ids]
+                                 [--name]
+                                 [--query-examples]
+                                 [--resource-group]
+                                 [--subscription]
+  requiredParameters:
+  - isRequired: true
+    name: --rule-name
+    summary: The name of the firewall rule.
+    description: ''
+  optionalParameters:
+  - name: --ids
+    summary: One or more resource IDs (space-delimited). It should be a complete resource ID containing all information of 'Resource Id' arguments. You should provide either --ids or other 'Resource Id' arguments.
+    description: ''
+  - name: --name -n
+    summary: Name of the Redis cache.
+    description: ''
+  - name: --query-examples
+    summary: Recommend JMESPath string for you. You can copy one of the query and paste it after --query parameter within double quotation marks to see the results. You can add one or more positional keywords so that we can give suggestions based on these key words.
+    description: ''
+  - name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/redis/_help.py
+- uid: az_redis_firewall_rules_update
+  name: az redis firewall-rules update
+  summary: Update a redis cache firewall rule.
+  description: ''
+  syntax: >-
+    az redis firewall-rules update --end-ip
+                                   --rule-name
+                                   --start-ip
+                                   [--ids]
+                                   [--name]
+                                   [--resource-group]
+                                   [--subscription]
+  requiredParameters:
+  - isRequired: true
+    name: --end-ip
+    summary: Highest IP address included in the range.
+    description: ''
+  - isRequired: true
+    name: --rule-name
+    summary: The name of the firewall rule.
+    description: ''
+  - isRequired: true
+    name: --start-ip
+    summary: Lowest IP address included in the range.
+    description: ''
+  optionalParameters:
+  - name: --ids
+    summary: One or more resource IDs (space-delimited). It should be a complete resource ID containing all information of 'Resource Id' arguments. You should provide either --ids or other 'Resource Id' arguments.
+    description: ''
+  - name: --name -n
+    summary: Name of the Redis cache.
+    description: ''
+  - name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/redis/_help.py
+commands:
+- az_redis_firewall_rules_create
+- az_redis_firewall_rules_delete
+- az_redis_firewall_rules_list
+- az_redis_firewall_rules_show
+- az_redis_firewall_rules_update
+globalParameters:
+- name: --debug
+  summary: Increase logging verbosity to show all debug logs.
+- name: --help -h
+  summary: Show this help message and exit.
+- name: --only-show-errors
+  summary: Only show errors, suppressing warnings.
+- name: --output -o
+  defaultValue: json
+  parameterValueGroup: json, jsonc, table, tsv
+  summary: Output format.
+- name: --query
+  summary: JMESPath query string. See <a href="http://jmespath.org/">http://jmespath.org/</a> for more information and examples.
+- name: --verbose
+  summary: Increase logging verbosity. Use --debug for full debug logs.
+metadata:
+  doc_source_url_repo: https://github.com/Azure/azure-cli/blob/dev/
+  ms.date: 10/17/2019
+  description: Manage Redis firewall rules.

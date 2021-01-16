@@ -1,0 +1,78 @@
+### YamlMime:AzureCLIGroup
+uid: az_monitor_log_analytics
+name: az monitor log-analytics
+summary: Manage Azure log analytics.
+description: ''
+commands:
+- az_monitor_log_analytics_cluster
+- az_monitor_log_analytics_cluster_create
+- az_monitor_log_analytics_cluster_delete
+- az_monitor_log_analytics_cluster_list
+- az_monitor_log_analytics_cluster_show
+- az_monitor_log_analytics_cluster_update
+- az_monitor_log_analytics_cluster_wait
+- az_monitor_log_analytics_workspace
+- az_monitor_log_analytics_workspace_create
+- az_monitor_log_analytics_workspace_data_export
+- az_monitor_log_analytics_workspace_data_export_create
+- az_monitor_log_analytics_workspace_data_export_delete
+- az_monitor_log_analytics_workspace_data_export_list
+- az_monitor_log_analytics_workspace_data_export_show
+- az_monitor_log_analytics_workspace_data_export_update
+- az_monitor_log_analytics_workspace_delete
+- az_monitor_log_analytics_workspace_get_schema
+- az_monitor_log_analytics_workspace_get_shared_keys
+- az_monitor_log_analytics_workspace_linked_service
+- az_monitor_log_analytics_workspace_linked_service_create
+- az_monitor_log_analytics_workspace_linked_service_delete
+- az_monitor_log_analytics_workspace_linked_service_list
+- az_monitor_log_analytics_workspace_linked_service_show
+- az_monitor_log_analytics_workspace_linked_service_update
+- az_monitor_log_analytics_workspace_linked_service_wait
+- az_monitor_log_analytics_workspace_linked_storage
+- az_monitor_log_analytics_workspace_linked_storage_add
+- az_monitor_log_analytics_workspace_linked_storage_create
+- az_monitor_log_analytics_workspace_linked_storage_delete
+- az_monitor_log_analytics_workspace_linked_storage_list
+- az_monitor_log_analytics_workspace_linked_storage_remove
+- az_monitor_log_analytics_workspace_linked_storage_show
+- az_monitor_log_analytics_workspace_list
+- az_monitor_log_analytics_workspace_list_deleted_workspaces
+- az_monitor_log_analytics_workspace_list_management_groups
+- az_monitor_log_analytics_workspace_list_usages
+- az_monitor_log_analytics_workspace_pack
+- az_monitor_log_analytics_workspace_pack_disable
+- az_monitor_log_analytics_workspace_pack_enable
+- az_monitor_log_analytics_workspace_pack_list
+- az_monitor_log_analytics_workspace_recover
+- az_monitor_log_analytics_workspace_saved_search
+- az_monitor_log_analytics_workspace_saved_search_create
+- az_monitor_log_analytics_workspace_saved_search_delete
+- az_monitor_log_analytics_workspace_saved_search_list
+- az_monitor_log_analytics_workspace_saved_search_show
+- az_monitor_log_analytics_workspace_saved_search_update
+- az_monitor_log_analytics_workspace_show
+- az_monitor_log_analytics_workspace_table
+- az_monitor_log_analytics_workspace_table_list
+- az_monitor_log_analytics_workspace_table_show
+- az_monitor_log_analytics_workspace_table_update
+- az_monitor_log_analytics_workspace_update
+globalParameters:
+- name: --debug
+  summary: Increase logging verbosity to show all debug logs.
+- name: --help -h
+  summary: Show this help message and exit.
+- name: --only-show-errors
+  summary: Only show errors, suppressing warnings.
+- name: --output -o
+  defaultValue: json
+  parameterValueGroup: json, jsonc, table, tsv
+  summary: Output format.
+- name: --query
+  summary: JMESPath query string. See <a href="http://jmespath.org/">http://jmespath.org/</a> for more information and examples.
+- name: --verbose
+  summary: Increase logging verbosity. Use --debug for full debug logs.
+metadata:
+  doc_source_url_repo: https://github.com/Azure/azure-cli/blob/dev/
+  ms.date: 12/14/2020
+  description: Manage Azure log analytics.

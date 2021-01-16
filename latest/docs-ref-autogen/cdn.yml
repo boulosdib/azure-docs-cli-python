@@ -1,0 +1,141 @@
+### YamlMime:AzureCLIGroup
+uid: az_cdn
+name: az cdn
+summary: Manage Azure Content Delivery Networks (CDNs).
+description: ''
+directCommands:
+- uid: az_cdn_name_exists
+  name: az cdn name-exists
+  summary: Check the availability of a resource name.
+  description: This is needed for resources where name is globally unique, such as a CDN endpoint.
+  syntax: >-
+    az cdn name-exists [--ids]
+                       [--name]
+                       [--subscription]
+  optionalParameters:
+  - name: --ids
+    summary: One or more resource IDs (space-delimited). It should be a complete resource ID containing all information of 'Resource Id' arguments. You should provide either --ids or other 'Resource Id' arguments.
+    description: ''
+  - name: --name -n
+    summary: The resource name to validate.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/cdn/_help.py
+- uid: az_cdn_usage
+  name: az cdn usage
+  summary: Check the quota and actual usage of the CDN profiles under the given subscription.
+  description: ''
+  syntax: az cdn usage [--subscription]
+  optionalParameters:
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/cdn/_help.py
+commands:
+- az_cdn_custom_domain
+- az_cdn_custom_domain_create
+- az_cdn_custom_domain_delete
+- az_cdn_custom_domain_disable_https
+- az_cdn_custom_domain_enable_https
+- az_cdn_custom_domain_list
+- az_cdn_custom_domain_show
+- az_cdn_edge_node
+- az_cdn_edge_node_list
+- az_cdn_endpoint
+- az_cdn_endpoint_create
+- az_cdn_endpoint_delete
+- az_cdn_endpoint_list
+- az_cdn_endpoint_load
+- az_cdn_endpoint_purge
+- az_cdn_endpoint_rule
+- az_cdn_endpoint_rule_action
+- az_cdn_endpoint_rule_action_add
+- az_cdn_endpoint_rule_action_remove
+- az_cdn_endpoint_rule_action_show
+- az_cdn_endpoint_rule_add
+- az_cdn_endpoint_rule_condition
+- az_cdn_endpoint_rule_condition_add
+- az_cdn_endpoint_rule_condition_remove
+- az_cdn_endpoint_rule_condition_show
+- az_cdn_endpoint_rule_remove
+- az_cdn_endpoint_rule_show
+- az_cdn_endpoint_show
+- az_cdn_endpoint_start
+- az_cdn_endpoint_stop
+- az_cdn_endpoint_update
+- az_cdn_endpoint_validate_custom_domain
+- az_cdn_endpoint_waf
+- az_cdn_endpoint_waf_policy
+- az_cdn_endpoint_waf_policy_remove
+- az_cdn_endpoint_waf_policy_set
+- az_cdn_endpoint_waf_policy_show
+- az_cdn_name_exists
+- az_cdn_origin
+- az_cdn_origin_create
+- az_cdn_origin_delete
+- az_cdn_origin_list
+- az_cdn_origin_show
+- az_cdn_origin_update
+- az_cdn_origin_group
+- az_cdn_origin_group_create
+- az_cdn_origin_group_delete
+- az_cdn_origin_group_list
+- az_cdn_origin_group_show
+- az_cdn_origin_group_update
+- az_cdn_profile
+- az_cdn_profile_create
+- az_cdn_profile_delete
+- az_cdn_profile_list
+- az_cdn_profile_show
+- az_cdn_profile_update
+- az_cdn_profile_usage
+- az_cdn_usage
+- az_cdn_waf
+- az_cdn_waf_policy
+- az_cdn_waf_policy_custom_rule
+- az_cdn_waf_policy_custom_rule_delete
+- az_cdn_waf_policy_custom_rule_list
+- az_cdn_waf_policy_custom_rule_set
+- az_cdn_waf_policy_custom_rule_show
+- az_cdn_waf_policy_delete
+- az_cdn_waf_policy_list
+- az_cdn_waf_policy_managed_rule_set
+- az_cdn_waf_policy_managed_rule_set_add
+- az_cdn_waf_policy_managed_rule_set_list
+- az_cdn_waf_policy_managed_rule_set_list_available
+- az_cdn_waf_policy_managed_rule_set_remove
+- az_cdn_waf_policy_managed_rule_set_rule_group_override
+- az_cdn_waf_policy_managed_rule_set_rule_group_override_delete
+- az_cdn_waf_policy_managed_rule_set_rule_group_override_list
+- az_cdn_waf_policy_managed_rule_set_rule_group_override_list_available
+- az_cdn_waf_policy_managed_rule_set_rule_group_override_set
+- az_cdn_waf_policy_managed_rule_set_rule_group_override_show
+- az_cdn_waf_policy_managed_rule_set_show
+- az_cdn_waf_policy_rate_limit_rule
+- az_cdn_waf_policy_rate_limit_rule_delete
+- az_cdn_waf_policy_rate_limit_rule_list
+- az_cdn_waf_policy_rate_limit_rule_set
+- az_cdn_waf_policy_rate_limit_rule_show
+- az_cdn_waf_policy_set
+- az_cdn_waf_policy_show
+globalParameters:
+- name: --debug
+  summary: Increase logging verbosity to show all debug logs.
+- name: --help -h
+  summary: Show this help message and exit.
+- name: --only-show-errors
+  summary: Only show errors, suppressing warnings.
+- name: --output -o
+  defaultValue: json
+  parameterValueGroup: json, jsonc, table, tsv
+  summary: Output format.
+- name: --query
+  summary: JMESPath query string. See <a href="http://jmespath.org/">http://jmespath.org/</a> for more information and examples.
+- name: --verbose
+  summary: Increase logging verbosity. Use --debug for full debug logs.
+metadata:
+  doc_source_url_repo: https://github.com/Azure/azure-cli/blob/dev/
+  ms.date: 12/02/2020
+  description: Manage Azure Content Delivery Networks (CDNs).

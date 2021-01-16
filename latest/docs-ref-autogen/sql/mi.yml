@@ -1,0 +1,399 @@
+### YamlMime:AzureCLIGroup
+uid: az_sql_mi
+name: az sql mi
+summary: Manage SQL managed instances.
+description: ''
+directCommands:
+- uid: az_sql_mi_create
+  name: az sql mi create
+  summary: Create a managed instance.
+  description: ''
+  syntax: >-
+    az sql mi create --admin-password
+                     --admin-user
+                     --name
+                     --resource-group
+                     --subnet
+                     [--assign-identity]
+                     [--backup-storage-redundancy]
+                     [--capacity]
+                     [--collation]
+                     [--edition]
+                     [--family]
+                     [--license-type {BasePrice, LicenseIncluded}]
+                     [--location]
+                     [--minimal-tls-version {1.0, 1.1, 1.2, None}]
+                     [--no-wait]
+                     [--proxy-override {Default, Proxy, Redirect}]
+                     [--public-data-endpoint-enabled {false, true}]
+                     [--storage]
+                     [--subscription]
+                     [--tags]
+                     [--timezone-id]
+                     [--vnet-name]
+                     [--yes]
+  examples:
+  - summary: Create a managed instance with minimal set of parameters
+    syntax: az sql mi create -g mygroup -n myinstance -l mylocation -i -u myusername -p mypassword --subnet /subscriptions/{SubID}/resourceGroups/{ResourceGroup}/providers/Microsoft.Network/virtualNetworks/{VNETName}/subnets/{SubnetName}
+  - summary: Create a managed instance with specified parameters and with identity
+    syntax: az sql mi create -g mygroup -n myinstance -l mylocation -i -u myusername -p mypassword --license-type LicenseIncluded --subnet /subscriptions/{SubID}/resourceGroups/{ResourceGroup}/providers/Microsoft.Network/virtualNetworks/{VNETName}/subnets/{SubnetName} --capacity 8 --storage 32GB --edition GeneralPurpose --family Gen5
+  - summary: Create managed instance with specified parameters and tags
+    syntax: az sql mi create -g mygroup -n myinstance -l mylocation -i -u myusername -p mypassword --license-type LicenseIncluded --subnet /subscriptions/{SubID}/resourceGroups/{ResourceGroup}/providers/Microsoft.Network/virtualNetworks/{VNETName}/subnets/{SubnetName} --capacity 8 --storage 32GB --edition GeneralPurpose --family Gen5 --tags tagName1=tagValue1 tagName2=tagValue2
+  - summary: Create managed instance with specified parameters and backup storage redundancy specified
+    syntax: az sql mi create -g mygroup -n myinstance -l mylocation -i -u myusername -p mypassword --license-type LicenseIncluded --subnet /subscriptions/{SubID}/resourceGroups/{ResourceGroup}/providers/Microsoft.Network/virtualNetworks/{VNETName}/subnets/{SubnetName} --capacity 8 --storage 32GB --edition GeneralPurpose --family Gen5 --backup-storage-redundancy Local
+  requiredParameters:
+  - isRequired: true
+    name: --admin-password -p
+    summary: The administrator login password (required for managed instance creation).
+    description: ''
+  - isRequired: true
+    name: --admin-user -u
+    summary: Administrator username for the managed instance. Can only be specified when the managed instance is being created (and is required for creation).
+    description: ''
+  - isRequired: true
+    name: --name -n
+    summary: The managed instance name.
+    description: ''
+  - isRequired: true
+    name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - isRequired: true
+    name: --subnet
+    summary: Name or ID of the subnet that allows access to an Azure Sql Managed Instance. If subnet name is provided, --vnet-name must be provided.
+    description: ''
+  optionalParameters:
+  - name: --assign-identity -i
+    summary: Generate and assign an Azure Active Directory Identity for this managed instance for use with key management services like Azure KeyVault.
+    description: ''
+  - name: --backup-storage-redundancy --bsr
+    summary: 'Backup storage redundancy used to store backups. Allowed values include: Local, Zone, Geo.'
+    description: ''
+  - name: --capacity -c
+    summary: The capacity of the managed instance in integer number of vcores.
+    description: ''
+  - name: --collation
+    summary: The collation of the managed instance.
+    description: ''
+  - name: --edition --tier -e
+    summary: 'The edition component of the sku. Allowed values include: GeneralPurpose, BusinessCritical.'
+    description: ''
+  - name: --family -f
+    summary: 'The compute generation component of the sku. Allowed values include: Gen4, Gen5.'
+    description: ''
+  - name: --license-type
+    parameterValueGroup: BasePrice, LicenseIncluded
+    summary: The license type to apply for this managed instance.
+    description: ''
+  - name: --location -l
+    summary: 'Location. Values from: `az account list-locations`. You can configure the default location using `az configure --defaults location=<location>`.'
+    description: ''
+  - name: --minimal-tls-version
+    parameterValueGroup: 1.0, 1.1, 1.2, None
+    summary: The minimal TLS version enforced by the managed instance for inbound connections.
+    description: ''
+  - name: --no-wait
+    summary: Do not wait for the long-running operation to finish.
+    description: ''
+  - name: --proxy-override
+    parameterValueGroup: Default, Proxy, Redirect
+    summary: The connection type used for connecting to the instance.
+    description: ''
+  - name: --public-data-endpoint-enabled
+    parameterValueGroup: false, true
+    summary: Whether or not the public data endpoint is enabled for the instance.
+    description: ''
+  - name: --storage
+    summary: The storage size of the managed instance. Storage size must be specified in increments of 32 GB.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  - name: --tags
+    summary: 'Space-separated tags: key[=value] [key[=value] ...]. Use "" to clear existing tags.'
+    description: ''
+  - name: --timezone-id
+    summary: The time zone id for the instance to set. A list of time zone ids is exposed through the sys.time_zone_info (Transact-SQL) view.
+    description: ''
+  - name: --vnet-name
+    summary: The virtual network name.
+    description: ''
+  - name: --yes -y
+    summary: Do not prompt for confirmation.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/sql/_help.py
+- uid: az_sql_mi_delete
+  name: az sql mi delete
+  summary: Delete a managed instance.
+  description: ''
+  syntax: >-
+    az sql mi delete [--ids]
+                     [--name]
+                     [--no-wait]
+                     [--resource-group]
+                     [--subscription]
+                     [--yes]
+  examples:
+  - summary: Delete a managed instance
+    syntax: az sql mi delete -g mygroup -n myinstance --yes
+  optionalParameters:
+  - name: --ids
+    summary: One or more resource IDs (space-delimited). It should be a complete resource ID containing all information of 'Resource Id' arguments. You should provide either --ids or other 'Resource Id' arguments.
+    description: ''
+  - name: --name -n
+    summary: The managed instance name.
+    description: ''
+  - name: --no-wait
+    summary: Do not wait for the long-running operation to finish.
+    description: ''
+  - name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  - name: --yes -y
+    summary: Do not prompt for confirmation.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/sql/_help.py
+- uid: az_sql_mi_failover
+  name: az sql mi failover
+  summary: Failover a managed instance.
+  description: ''
+  syntax: >-
+    az sql mi failover [--ids]
+                       [--name]
+                       [--no-wait]
+                       [--replica-type]
+                       [--resource-group]
+                       [--subscription]
+  examples:
+  - summary: Failover a managed instance primary replica
+    syntax: az sql mi failover -g mygroup -n myinstance
+  - summary: Failover a managed instance readable secodary replica
+    syntax: az sql mi failover -g mygroup -n myinstance --replica-type ReadableSecondary
+  optionalParameters:
+  - name: --ids
+    summary: One or more resource IDs (space-delimited). It should be a complete resource ID containing all information of 'Resource Id' arguments. You should provide either --ids or other 'Resource Id' arguments.
+    description: ''
+  - name: --name -n
+    summary: The managed instance name.
+    description: ''
+  - name: --no-wait
+    summary: Do not wait for the long-running operation to finish.
+    description: ''
+  - name: --replica-type
+    summary: The type of replica to be failed over.
+    description: ''
+  - name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/sql/_help.py
+- uid: az_sql_mi_list
+  name: az sql mi list
+  summary: List available managed instances.
+  description: ''
+  syntax: >-
+    az sql mi list [--query-examples]
+                   [--resource-group]
+                   [--subscription]
+  examples:
+  - summary: List all managed instances in the current subscription.
+    syntax: az sql mi list
+  - summary: List all managed instances in a resource group.
+    syntax: az sql mi list -g mygroup
+  optionalParameters:
+  - name: --query-examples
+    summary: Recommend JMESPath string for you. You can copy one of the query and paste it after --query parameter within double quotation marks to see the results. You can add one or more positional keywords so that we can give suggestions based on these key words.
+    description: ''
+  - name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/sql/_help.py
+- uid: az_sql_mi_show
+  name: az sql mi show
+  summary: Get the details for a managed instance.
+  description: ''
+  syntax: >-
+    az sql mi show [--ids]
+                   [--name]
+                   [--query-examples]
+                   [--resource-group]
+                   [--subscription]
+  examples:
+  - summary: Get the details for a managed instance
+    syntax: az sql mi show -g mygroup -n myinstance
+  optionalParameters:
+  - name: --ids
+    summary: One or more resource IDs (space-delimited). It should be a complete resource ID containing all information of 'Resource Id' arguments. You should provide either --ids or other 'Resource Id' arguments.
+    description: ''
+  - name: --name -n
+    summary: The managed instance name.
+    description: ''
+  - name: --query-examples
+    summary: Recommend JMESPath string for you. You can copy one of the query and paste it after --query parameter within double quotation marks to see the results. You can add one or more positional keywords so that we can give suggestions based on these key words.
+    description: ''
+  - name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/sql/_help.py
+- uid: az_sql_mi_update
+  name: az sql mi update
+  summary: Update a managed instance.
+  description: ''
+  syntax: >-
+    az sql mi update [--add]
+                     [--admin-password]
+                     [--assign-identity]
+                     [--capacity]
+                     [--edition]
+                     [--family]
+                     [--force-string]
+                     [--ids]
+                     [--license-type {BasePrice, LicenseIncluded}]
+                     [--minimal-tls-version {1.0, 1.1, 1.2, None}]
+                     [--name]
+                     [--no-wait]
+                     [--proxy-override {Default, Proxy, Redirect}]
+                     [--public-data-endpoint-enabled {false, true}]
+                     [--remove]
+                     [--resource-group]
+                     [--set]
+                     [--storage]
+                     [--subscription]
+                     [--tags]
+  examples:
+  - summary: Updates a mi with specified parameters and with identity
+    syntax: az sql mi update -g mygroup -n myinstance -i -p mypassword --license-type mylicensetype --capacity vcorecapacity --storage storagesize
+  - summary: Update mi edition and hardware family
+    syntax: az sql mi update -g mygroup -n myinstance --tier GeneralPurpose --family Gen5
+  - summary: Add or update a tag.
+    syntax: az sql mi update -g mygroup -n myinstance --set tags.tagName=tagValue
+  - summary: Remove a tag.
+    syntax: az sql mi update -g mygroup -n myinstance --remove tags.tagName
+  - summary: Update a managed instance. (autogenerated)
+    syntax: az sql mi update --name myinstance --proxy-override Default --resource-group mygroup --subscription MySubscription
+  - summary: Update a managed instance. (autogenerated)
+    syntax: az sql mi update --name myinstance --public-data-endpoint-enabled true --resource-group mygroup --subscription MySubscription
+  optionalParameters:
+  - name: --add
+    summary: 'Add an object to a list of objects by specifying a path and key value pairs.  Example: --add property.listProperty <key=value, string or JSON string>.'
+    description: ''
+  - name: --admin-password -p
+    summary: The administrator login password (required for managed instance creation).
+    description: ''
+  - name: --assign-identity -i
+    summary: Generate and assign an Azure Active Directory Identity for this managed instance for use with key management services like Azure KeyVault. If identity is already assigned - do nothing.
+    description: ''
+  - name: --capacity -c
+    summary: The capacity of the managed instance in integer number of vcores.
+    description: ''
+  - name: --edition --tier -e
+    summary: 'The edition component of the sku. Allowed values include: GeneralPurpose, BusinessCritical.'
+    description: ''
+  - name: --family -f
+    summary: 'The compute generation component of the sku. Allowed values include: Gen4, Gen5.'
+    description: ''
+  - name: --force-string
+    summary: When using 'set' or 'add', preserve string literals instead of attempting to convert to JSON.
+    description: ''
+  - name: --ids
+    summary: One or more resource IDs (space-delimited). It should be a complete resource ID containing all information of 'Resource Id' arguments. You should provide either --ids or other 'Resource Id' arguments.
+    description: ''
+  - name: --license-type
+    parameterValueGroup: BasePrice, LicenseIncluded
+    summary: The license type to apply for this managed instance.
+    description: ''
+  - name: --minimal-tls-version
+    parameterValueGroup: 1.0, 1.1, 1.2, None
+    summary: The minimal TLS version enforced by the managed instance for inbound connections.
+    description: ''
+  - name: --name -n
+    summary: The managed instance name.
+    description: ''
+  - name: --no-wait
+    summary: Do not wait for the long-running operation to finish.
+    description: ''
+  - name: --proxy-override
+    parameterValueGroup: Default, Proxy, Redirect
+    summary: The connection type used for connecting to the instance.
+    description: ''
+  - name: --public-data-endpoint-enabled
+    parameterValueGroup: false, true
+    summary: Whether or not the public data endpoint is enabled for the instance.
+    description: ''
+  - name: --remove
+    summary: 'Remove a property or an element from a list.  Example: --remove property.list <indexToRemove> OR --remove propertyToRemove.'
+    description: ''
+  - name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - name: --set
+    summary: 'Update an object by specifying a property path and value to set.  Example: --set property1.property2=<value>.'
+    description: ''
+  - name: --storage
+    summary: The storage size of the managed instance. Storage size must be specified in increments of 32 GB.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  - name: --tags
+    summary: 'Space-separated tags: key[=value] [key[=value] ...]. Use "" to clear existing tags.'
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/sql/_help.py
+commands:
+- az_sql_mi_ad_admin
+- az_sql_mi_ad_admin_create
+- az_sql_mi_ad_admin_delete
+- az_sql_mi_ad_admin_list
+- az_sql_mi_ad_admin_update
+- az_sql_mi_ad_only_auth
+- az_sql_mi_ad_only_auth_disable
+- az_sql_mi_ad_only_auth_enable
+- az_sql_mi_ad_only_auth_get
+- az_sql_mi_create
+- az_sql_mi_delete
+- az_sql_mi_failover
+- az_sql_mi_key
+- az_sql_mi_key_create
+- az_sql_mi_key_delete
+- az_sql_mi_key_list
+- az_sql_mi_key_show
+- az_sql_mi_list
+- az_sql_mi_op
+- az_sql_mi_op_cancel
+- az_sql_mi_op_list
+- az_sql_mi_op_show
+- az_sql_mi_show
+- az_sql_mi_tde_key
+- az_sql_mi_tde_key_set
+- az_sql_mi_tde_key_show
+- az_sql_mi_update
+globalParameters:
+- name: --debug
+  summary: Increase logging verbosity to show all debug logs.
+- name: --help -h
+  summary: Show this help message and exit.
+- name: --only-show-errors
+  summary: Only show errors, suppressing warnings.
+- name: --output -o
+  defaultValue: json
+  parameterValueGroup: json, jsonc, table, tsv
+  summary: Output format.
+- name: --query
+  summary: JMESPath query string. See <a href="http://jmespath.org/">http://jmespath.org/</a> for more information and examples.
+- name: --verbose
+  summary: Increase logging verbosity. Use --debug for full debug logs.
+metadata:
+  doc_source_url_repo: https://github.com/Azure/azure-cli/blob/dev/
+  ms.date: 10/22/2020
+  description: Manage SQL managed instances.

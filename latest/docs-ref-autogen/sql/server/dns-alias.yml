@@ -1,0 +1,189 @@
+### YamlMime:AzureCLIGroup
+uid: az_sql_server_dns_alias
+name: az sql server dns-alias
+summary: Manage a server's DNS aliases.
+description: ''
+directCommands:
+- uid: az_sql_server_dns_alias_create
+  name: az sql server dns-alias create
+  summary: Creates a server dns alias.
+  description: ''
+  syntax: >-
+    az sql server dns-alias create --name
+                                   --resource-group
+                                   --server
+                                   [--subscription]
+  requiredParameters:
+  - isRequired: true
+    name: --name -n
+    summary: Name of the DNS alias.
+    description: ''
+  - isRequired: true
+    name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - isRequired: true
+    name: --server -s
+    summary: Name of the Azure SQL server. You can configure the default using `az configure --defaults sql-server=<name>`.
+    description: ''
+  optionalParameters:
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/sql/_help.py
+- uid: az_sql_server_dns_alias_delete
+  name: az sql server dns-alias delete
+  summary: Deletes the server DNS alias with the given name.
+  description: ''
+  syntax: >-
+    az sql server dns-alias delete --name
+                                   [--ids]
+                                   [--resource-group]
+                                   [--server]
+                                   [--subscription]
+  requiredParameters:
+  - isRequired: true
+    name: --name -n
+    summary: Name of the DNS alias.
+    description: ''
+  optionalParameters:
+  - name: --ids
+    summary: One or more resource IDs (space-delimited). It should be a complete resource ID containing all information of 'Resource Id' arguments. You should provide either --ids or other 'Resource Id' arguments.
+    description: ''
+  - name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - name: --server -s
+    summary: Name of the Azure SQL server. You can configure the default using `az configure --defaults sql-server=<name>`.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/sql/_help.py
+- uid: az_sql_server_dns_alias_list
+  name: az sql server dns-alias list
+  summary: Gets a list of server DNS aliases for a server.
+  description: ''
+  syntax: >-
+    az sql server dns-alias list [--ids]
+                                 [--query-examples]
+                                 [--resource-group]
+                                 [--server]
+                                 [--subscription]
+  optionalParameters:
+  - name: --ids
+    summary: One or more resource IDs (space-delimited). It should be a complete resource ID containing all information of 'Resource Id' arguments. You should provide either --ids or other 'Resource Id' arguments.
+    description: ''
+  - name: --query-examples
+    summary: Recommend JMESPath string for you. You can copy one of the query and paste it after --query parameter within double quotation marks to see the results. You can add one or more positional keywords so that we can give suggestions based on these key words.
+    description: ''
+  - name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - name: --server -s
+    summary: Name of the Azure SQL server. You can configure the default using `az configure --defaults sql-server=<name>`.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/sql/_help.py
+- uid: az_sql_server_dns_alias_set
+  name: az sql server dns-alias set
+  summary: Sets a server to which DNS alias should point.
+  description: ''
+  syntax: >-
+    az sql server dns-alias set --name
+                                --original-server
+                                [--ids]
+                                [--original-resource-group]
+                                [--original-subscription-id]
+                                [--resource-group]
+                                [--server]
+                                [--subscription]
+  requiredParameters:
+  - isRequired: true
+    name: --name -n
+    summary: Name of the DNS alias.
+    description: ''
+  - isRequired: true
+    name: --original-server
+    summary: The name of the server to which alias is currently pointing.
+    description: ''
+  optionalParameters:
+  - name: --ids
+    summary: One or more resource IDs (space-delimited). It should be a complete resource ID containing all information of 'Resource Id' arguments. You should provide either --ids or other 'Resource Id' arguments.
+    description: ''
+  - name: --original-resource-group
+    summary: Name of the original resource group.
+    description: ''
+  - name: --original-subscription-id
+    summary: ID of the original subscription.
+    description: ''
+  - name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - name: --server -s
+    summary: Name of the Azure SQL server. You can configure the default using `az configure --defaults sql-server=<name>`.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/sql/_help.py
+- uid: az_sql_server_dns_alias_show
+  name: az sql server dns-alias show
+  summary: Gets a server DNS alias.
+  description: ''
+  syntax: >-
+    az sql server dns-alias show --name
+                                 [--ids]
+                                 [--query-examples]
+                                 [--resource-group]
+                                 [--server]
+                                 [--subscription]
+  requiredParameters:
+  - isRequired: true
+    name: --name -n
+    summary: Name of the DNS alias.
+    description: ''
+  optionalParameters:
+  - name: --ids
+    summary: One or more resource IDs (space-delimited). It should be a complete resource ID containing all information of 'Resource Id' arguments. You should provide either --ids or other 'Resource Id' arguments.
+    description: ''
+  - name: --query-examples
+    summary: Recommend JMESPath string for you. You can copy one of the query and paste it after --query parameter within double quotation marks to see the results. You can add one or more positional keywords so that we can give suggestions based on these key words.
+    description: ''
+  - name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - name: --server -s
+    summary: Name of the Azure SQL server. You can configure the default using `az configure --defaults sql-server=<name>`.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/sql/_help.py
+commands:
+- az_sql_server_dns_alias_create
+- az_sql_server_dns_alias_delete
+- az_sql_server_dns_alias_list
+- az_sql_server_dns_alias_set
+- az_sql_server_dns_alias_show
+globalParameters:
+- name: --debug
+  summary: Increase logging verbosity to show all debug logs.
+- name: --help -h
+  summary: Show this help message and exit.
+- name: --only-show-errors
+  summary: Only show errors, suppressing warnings.
+- name: --output -o
+  defaultValue: json
+  parameterValueGroup: json, jsonc, table, tsv
+  summary: Output format.
+- name: --query
+  summary: JMESPath query string. See <a href="http://jmespath.org/">http://jmespath.org/</a> for more information and examples.
+- name: --verbose
+  summary: Increase logging verbosity. Use --debug for full debug logs.
+metadata:
+  doc_source_url_repo: https://github.com/Azure/azure-cli/blob/dev/
+  ms.date: 10/22/2020
+  description: Manage a server's DNS aliases.

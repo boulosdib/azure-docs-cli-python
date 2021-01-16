@@ -1,39 +1,38 @@
 ---
-title: Output formats for Azure CLI 2.0 
-description: Use --output to format the output of Azure CLI 2.0 commands to tables, lists or json.
-keywords: Azure CLI 2.0, output, format, table, list, json, Linux, Mac, Windows, OS X
-author: rloutlaw
-ms.author: routlaw
-manager: douge
-ms.date: 02/27/2017
-ms.topic: article
-ms.prod: azure
-ms.technology: azure
+title: Output formats for Azure CLI
+description: Learn how to format the output of Azure CLI commands to tables, lists or json.
+author: dbradish-microsoft
+ms.author: dbradish
+manager: barbkess
+ms.date: 09/23/2019
+ms.topic: conceptual
+ms.service: azure-cli
 ms.devlang: azurecli
-ms.service: multiple
-ms.assetid: 74bdb727-481d-45f7-a44e-15d18dc55483
+ms.custom: devx-track-azurecli
 ---
+# Output formats for Azure CLI commands
 
-# Output formats for Azure CLI 2.0 commands
-
-Azure CLI 2.0 uses json as its default output option, but offers various ways for you to format the output of any command.  Use the `--output` (or `--out` or `-o`) parameter to format the output of the command into one of the output types noted in the following table. 
+The Azure CLI uses JSON as its default output format, but offers other formats.  Use the `--output` (`--out` or `-o`) parameter
+to format CLI output. The argument values and types of output are:
 
 --output | Description
 ---------|-------------------------------
-`json`   | json string. `json` is the default.
-`jsonc`  | colorized json string.
-`table`  | table with column headings.
-`tsv`    | tab-separated values.
+`json`   | JSON string. This setting is the default
+`jsonc`  | Colorized JSON
+`yaml`   | YAML, a machine-readable alternative to JSON
+`table`  | ASCII table with keys as column headings
+`tsv`    | Tab-separated values, with no keys
+`none`   | No output other than errors and warnings
 
-## Using the json option
+## JSON output format
 
-The following example displays the list of virtual machines in your subscriptions in the default json format.
+The following example displays the list of virtual machines in your subscriptions in the default JSON format.
 
-```azurecli
+```azurecli-interactive
 az vm list --output json
 ```
 
-The results are in this form (only showing partial output for sake of brevity).
+The following output has some fields omitted for brevity, and identifying information replaced.
 
 ```json
 [
@@ -43,7 +42,7 @@ The results are in this form (only showing partial output for sake of brevity).
     "hardwareProfile": {
       "vmSize": "Standard_DS1"
     },
-    "id": "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/DEMORG1/providers/Microsoft.Compute/virtualMachines/DemoVM010",
+    "id": "/subscriptions/.../resourceGroups/DEMORG1/providers/Microsoft.Compute/virtualMachines/DemoVM010",
     "instanceView": null,
     "licenseType": null,
     "location": "westus",
@@ -51,7 +50,7 @@ The results are in this form (only showing partial output for sake of brevity).
     "networkProfile": {
       "networkInterfaces": [
         {
-          "id": "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/demorg1/providers/Microsoft.Network/networkInterfaces/DemoVM010VMNic",
+          "id": "/subscriptions/.../resourceGroups/demorg1/providers/Microsoft.Network/networkInterfaces/DemoVM010VMNic",
           "primary": null,
           "resourceGroup": "demorg1"
         }
@@ -59,19 +58,50 @@ The results are in this form (only showing partial output for sake of brevity).
     },
           ...
           ...
-          ...   
+          ...
 ]
 ```
- 
-## Using the table option
 
-The table option provides an easy to read set of output, but note that nested objects are not included in the output with the simple `--output table`, unlike the preceding .json example.  Using the same example with 'table' output format provides a curated list of most common property values.
+## YAML output format
 
-```azurecli
+The `yaml` format prints output as [YAML](http://yaml.org/), a plain-text data serialization format. YAML tends to be easier to read than JSON, and easily maps to
+that format. Some applications and CLI commands take YAML as configuration input, instead of JSON.
+
+```azurecli-interactive
+az vm list --out yaml
+```
+
+The following output has some fields omitted for brevity, and identifying information replaced.
+
+```yaml
+- availabilitySet: null
+  diagnosticsProfile: null
+  hardwareProfile:
+    vmSize: Standard_DS1_v2
+  id: /subscriptions/.../resourceGroups/DEMORG1/providers/Microsoft.Compute/virtualMachines/DemoVM010
+  identity: null
+  instanceView: null
+  licenseType: null
+  location: westus
+  name: ExampleVM1
+  networkProfile:
+    networkInterfaces:
+    - id: /subscriptions/.../resourceGroups/DemoRG1/providers/Microsoft.Network/networkInterfaces/DemoVM010Nic
+      primary: null
+      resourceGroup: DemoRG1
+  ...
+...
+```
+
+## Table output format
+
+The `table` format prints output as an ASCII table, making it easy to read and scan. Nested objects aren't included in table output, but can still be filtered as part of a query. Some fields aren't included in the table, so this format is best when you want a quick, human-searchable overview of data.
+
+```azurecli-interactive
 az vm list --out table
 ```
 
-```
+```output
 Name         ResourceGroup    Location
 -----------  ---------------  ----------
 DemoVM010    DEMORG1          westus
@@ -83,11 +113,11 @@ KBDemo020    RGDEMO001        westus
 
 You can use the `--query` parameter to customize the properties and columns you want to show in the list output. The following example shows how to select just the VM Name and the Resource Group Name in the `list` command.
 
-```azurecli
-az vm list --query "[].{ resource: resourceGroup, name: name }" -o table
+```azurecli-interactive
+az vm list --query "[].{resource:resourceGroup, name:name}" -o table
 ```
 
-```
+```output
 Resource    Name
 ----------  -----------
 DEMORG1     DemoVM010
@@ -97,42 +127,92 @@ RGDEMO001   KBDemo001VM
 RGDEMO001   KBDemo020
 ```
 
-## Using the tsv option
+> [!NOTE]
+> Some keys are not printed in the table view by default. These are `id`, `type`, and `etag`. If you need to see these
+> in your output, you can use the JMESPath re-keying feature to change the key name and avoid filtering.
+>
+> ```azurecli-interactive
+> az vm list --query "[].{objectID:id}" -o table
+> ```
 
-'tsv' output format returns a simple text-based and tab-separated output with no headings and dashes. This format makes it easy to consume the output into other commands and tools that need to process the text in some form. Using the preceding example with the `tsv` option outputs the tab-separated result.
+For more about using queries to filter data, see [Use JMESPath queries with Azure CLI](./query-azure-cli.md).
 
-```azurecli
+## TSV output format
+
+The `tsv` output format returns tab- and newline-separated values without additional formatting, keys, or other symbols. This format makes it easy to consume the output into other commands and tools that need to process the text in some form. Like the `table` format, `tsv` doesn't print nested objects.
+
+Using the preceding example with the `tsv` option outputs the tab-separated result.
+
+```azurecli-interactive
 az vm list --out tsv
 ```
 
-```
-None	None		/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/DEMORG1/providers/Microsoft.Compute/virtualMachines/DemoVM010	None	None	westus	DemoVM010			None	Succeeded	DEMORG1	None			Microsoft.Compute/virtualMachines	cbd56d9b-9340-44bc-a722-25f15b578444
-None	None		/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/DEMORG1/providers/Microsoft.Compute/virtualMachines/demovm212	None	None	westus	demovm212			None	Succeeded	DEMORG1	None			Microsoft.Compute/virtualMachines	4bdac85d-c2f7-410f-9907-ca7921d930b4
-None	None		/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/DEMORG1/providers/Microsoft.Compute/virtualMachines/demovm213	None	None	westus	demovm213			None	Succeeded	DEMORG1	None			Microsoft.Compute/virtualMachines	2131c664-221a-4b7f-9653-f6d542fbfa34
-None	None		/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/RGDEMO001/providers/Microsoft.Compute/virtualMachines/KBDemo001VM	None	None	westus	KBDemo001VM			None	Succeeded	RGDEMO001	None			Microsoft.Compute/virtualMachines	14e74761-c17e-4530-a7be-9e4ff06ea74b
-None	None		/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/RGDEMO001/providers/Microsoft.Compute/virtualMachines/KBDemo02None	None	westus	KBDemo020			None	Succeeded	RGDEMO001	None			Microsoft.Compute/virtualMachinesed36baa9-9b80-48a8-b4a9-854c7a858ece
-```
-
-The next example shows how the `tsv` output can be piped to commands like `grep` and `cut` to further parse specific values out of the `list` output. The `grep` command selects only items that have text "RGD" in them and then the `cut` command selects only the eighth field (separated by tabs) value to show in the output.
-
-```azurecli
-az vm list --out tsv | grep RGD | cut -f8
+```output
+None    None        /subscriptions/.../resourceGroups/DEMORG1/providers/Microsoft.Compute/virtualMachines/DemoVM010    None    None    westus    DemoVM010            None    Succeeded    DEMORG1    None            Microsoft.Compute/virtualMachines    cbd56d9b-9340-44bc-a722-25f15b578444
+None    None        /subscriptions/.../resourceGroups/DEMORG1/providers/Microsoft.Compute/virtualMachines/demovm212    None    None    westus    demovm212            None    Succeeded    DEMORG1    None            Microsoft.Compute/virtualMachines    4bdac85d-c2f7-410f-9907-ca7921d930b4
+None    None        /subscriptions/.../resourceGroups/DEMORG1/providers/Microsoft.Compute/virtualMachines/demovm213    None    None    westus    demovm213            None    Succeeded    DEMORG1    None            Microsoft.Compute/virtualMachines    2131c664-221a-4b7f-9653-f6d542fbfa34
+None    None        /subscriptions/.../resourceGroups/RGDEMO001/providers/Microsoft.Compute/virtualMachines/KBDemo001VM    None    None    westus    KBDemo001VM            None    Succeeded    RGDEMO001    None            Microsoft.Compute/virtualMachines    14e74761-c17e-4530-a7be-9e4ff06ea74b
+None    None        /subscriptions/.../resourceGroups/RGDEMO001/providers/Microsoft.Compute/virtualMachines/KBDemo020   None    None    westus    KBDemo020            None    Succeeded    RGDEMO001    None            Microsoft.Compute/virtualMachines    36baa9-9b80-48a8-b4a9-854c7a858ece
 ```
 
+One restriction of the TSV output format is that there isn't a guarantee on output ordering. The CLI makes a best effort to preserve ordering by sorting keys in the response JSON alphebetically,
+and then printing their values in order for TSV output. This isn't a guarantee that the order is always identical though, since the Azure service response format may change.
+
+In order to enforce consistent ordering, you'll need to use the `--query` parameter and the [multiselect list](query-azure-cli.md#get-multiple-values) format. When a CLI command returns a single
+JSON dictionary, use the general format `[key1, key2, ..., keyN]` to force a key order.  For CLI commands which return an array, use the general format `[].[key1, key2, ..., keyN]` to order column values.
+
+For example, to order the information displayed above by ID, location, resource group, and VM name:
+
+```azurecli-interactive
+az vm list --out tsv --query '[].[id, location, resourceGroup, name]'
 ```
+
+```output
+/subscriptions/.../resourceGroups/DEMORG1/providers/Microsoft.Compute/virtualMachines/DemoVM010    westus    DEMORG1    DemoVM010
+/subscriptions/.../resourceGroups/DEMORG1/providers/Microsoft.Compute/virtualMachines/demovm212    westus    DEMORG1    demovm212
+/subscriptions/.../resourceGroups/DEMORG1/providers/Microsoft.Compute/virtualMachines/demovm213    westus    DEMORG1    demovm213
+/subscriptions/.../resourceGroups/RGDEMO001/providers/Microsoft.Compute/virtualMachines/KBDemo001VM     westus  RGDEMO001       KBDemo001VM
+/subscriptions/.../resourceGroups/RGDEMO001/providers/Microsoft.Compute/virtualMachines/KBDemo020       westus  RGDEMO001       KBDemo020
+```
+
+The next example shows how `tsv` output can be piped to other commands in bash. The query is used to filter output and force ordering, `grep` selects items that have text "RGD" in them, then the `cut`
+command selects the fourth field to show the name of the VM in output.
+
+```azurecli-interactive
+az vm list --out tsv --query '[].[id, location, resourceGroup, name]' | grep RGD | cut -f4
+```
+
+```output
 KBDemo001VM
 KBDemo020
 ```
 
-## Setting the default output format
+## Set the default output format
 
-You can use the `az configure` command to set up your environment or establish preferences such as default settings for output formats. For common use, the easiest output format default is the "table" format - select **3** when prompted for output format choices. 
+Use the interactive `az configure` command to set up your environment and establish default settings for output formats. The default output format is `json`.
 
+```azurecli-interactive
+az configure
 ```
+
+```output
+Welcome to the Azure CLI! This command will guide you through logging in and setting some default values.
+
+Your settings can be found at /home/defaultuser/.azure/config
+Your current configuration is as follows:
+
+  ...
+
+Do you wish to change your settings? (y/N): y
+
 What default output format would you like?
- [1] json - JSON formatted output that most closely matches API responses
- [2] jsonc - Colored JSON formatted output that most closely matches API responses
- [3] table - Human-readable output format
- [4] tsv - Tab and Newline delimited, great for GREP, AWK, etc.
-Please enter a choice [3]: 
+ [1] json - JSON formatted output that most closely matches API responses.
+ [2] jsonc - Colored JSON formatted output that most closely matches API responses.
+ [3] table - Human-readable output format.
+ [4] tsv - Tab- and Newline-delimited. Great for GREP, AWK, etc.
+ [5] yaml - YAML formatted output. An alternative to JSON. Great for configuration files.
+ [6] none - No output, except for errors and warnings.
+Please enter a choice [1]:
 ```
+
+To learn more about configuring your environment, see [Azure CLI configuration](./azure-cli-configuration.md).

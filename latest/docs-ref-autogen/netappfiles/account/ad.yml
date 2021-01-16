@@ -1,0 +1,186 @@
+### YamlMime:AzureCLIGroup
+uid: az_netappfiles_account_ad
+name: az netappfiles account ad
+summary: Manage Azure NetApp Files (ANF) Account active directories.
+description: ''
+directCommands:
+- uid: az_netappfiles_account_ad_add
+  name: az netappfiles account ad add
+  summary: Add an active directory to the account.
+  description: ''
+  syntax: >-
+    az netappfiles account ad add --dns
+                                  --domain
+                                  --password
+                                  --smb-server-name
+                                  --username
+                                  [--account-name]
+                                  [--ad-name]
+                                  [--add]
+                                  [--aes-encryption]
+                                  [--backup-operators]
+                                  [--force-string]
+                                  [--ids]
+                                  [--kdc-ip]
+                                  [--ldap-signing]
+                                  [--organizational-unit]
+                                  [--remove]
+                                  [--resource-group]
+                                  [--server-root-ca-cert]
+                                  [--set]
+                                  [--subscription]
+  examples:
+  - summary: Add an active directory to the account
+    syntax: az netappfiles account ad add -g mygroup --name myname --username aduser --password aduser --smb-server-name SMBSERVER --dns 1.2.3.4 --domain westcentralus
+  requiredParameters:
+  - isRequired: true
+    name: --dns
+    summary: Comma separated list of DNS server IP addresses for the Active Directory domain.
+    description: ''
+  - isRequired: true
+    name: --domain
+    summary: Name of the Active Directory domain.
+    description: ''
+  - isRequired: true
+    name: --password
+    summary: Plain text password of Active Directory domain administrator.
+    description: ''
+  - isRequired: true
+    name: --smb-server-name
+    summary: NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes. Must be 10 characters or less.
+    description: ''
+  - isRequired: true
+    name: --username
+    summary: Username of Active Directory domain administrator.
+    description: ''
+  optionalParameters:
+  - name: --account-name --name -a -n
+    summary: The name of the ANF account.
+    description: ''
+  - name: --ad-name
+    summary: Name of the active directory machine. This optional parameter is used only while creating kerberos volume.
+    description: ''
+  - name: --add
+    summary: 'Add an object to a list of objects by specifying a path and key value pairs.  Example: --add property.listProperty <key=value, string or JSON string>.'
+    description: ''
+  - name: --aes-encryption
+    summary: If enabled, AES encryption will be enabled for SMB communication.
+    description: ''
+  - name: --backup-operators
+    summary: Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier.
+    description: ''
+  - name: --force-string
+    summary: When using 'set' or 'add', preserve string literals instead of attempting to convert to JSON.
+    description: ''
+  - name: --ids
+    summary: One or more resource IDs (space-delimited). It should be a complete resource ID containing all information of 'Resource Id' arguments. You should provide either --ids or other 'Resource Id' arguments.
+    description: ''
+  - name: --kdc-ip
+    summary: Kdc server IP addresses for the active directory machine. This optional parameter is used only while creating kerberos volume.
+    description: ''
+  - name: --ldap-signing
+    summary: Specifies whether or not the LDAP traffic needs to be signed.
+    description: ''
+  - name: --organizational-unit
+    summary: The Organizational Unit (OU) within the Windows Active Directory.
+    description: ''
+  - name: --remove
+    summary: 'Remove a property or an element from a list.  Example: --remove property.list <indexToRemove> OR --remove propertyToRemove.'
+    description: ''
+  - name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - name: --server-root-ca-cert
+    summary: When LDAP over SSL/TLS is enabled, the LDAP client is required to have base64 encoded Active Directory Certificate Service's self-signed root CA certificate, this optional parameter is used only for dual protocol with LDAP user-mapping volumes.
+    description: ''
+  - name: --set
+    summary: 'Update an object by specifying a property path and value to set.  Example: --set property1.property2=<value>.'
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/netappfiles/_help.py
+- uid: az_netappfiles_account_ad_list
+  name: az netappfiles account ad list
+  summary: List the active directories of an account.
+  description: ''
+  syntax: >-
+    az netappfiles account ad list --account-name
+                                   --resource-group
+                                   [--query-examples]
+                                   [--subscription]
+  examples:
+  - summary: Add an active directory to the account
+    syntax: az netappfiles account ad list -g mygroup --name myname
+  requiredParameters:
+  - isRequired: true
+    name: --account-name --name -a -n
+    summary: The name of the ANF account.
+    description: ''
+  - isRequired: true
+    name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  optionalParameters:
+  - name: --query-examples
+    summary: Recommend JMESPath string for you. You can copy one of the query and paste it after --query parameter within double quotation marks to see the results. You can add one or more positional keywords so that we can give suggestions based on these key words.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/netappfiles/_help.py
+- uid: az_netappfiles_account_ad_remove
+  name: az netappfiles account ad remove
+  summary: Remove an active directory from the account.
+  description: ''
+  syntax: >-
+    az netappfiles account ad remove --active-directory
+                                     [--account-name]
+                                     [--ids]
+                                     [--resource-group]
+                                     [--subscription]
+  examples:
+  - summary: Remove an active directory from the account
+    syntax: az netappfiles account ad remove -g mygroup --name myname --active-directory 13641da9-c0e9-4b97-84fc-4f8014a93848
+  requiredParameters:
+  - isRequired: true
+    name: --active-directory
+    summary: The id of the active directory.
+    description: ''
+  optionalParameters:
+  - name: --account-name --name -a -n
+    summary: The name of the ANF account.
+    description: ''
+  - name: --ids
+    summary: One or more resource IDs (space-delimited). It should be a complete resource ID containing all information of 'Resource Id' arguments. You should provide either --ids or other 'Resource Id' arguments.
+    description: ''
+  - name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/netappfiles/_help.py
+commands:
+- az_netappfiles_account_ad_add
+- az_netappfiles_account_ad_list
+- az_netappfiles_account_ad_remove
+globalParameters:
+- name: --debug
+  summary: Increase logging verbosity to show all debug logs.
+- name: --help -h
+  summary: Show this help message and exit.
+- name: --only-show-errors
+  summary: Only show errors, suppressing warnings.
+- name: --output -o
+  defaultValue: json
+  parameterValueGroup: json, jsonc, table, tsv
+  summary: Output format.
+- name: --query
+  summary: JMESPath query string. See <a href="http://jmespath.org/">http://jmespath.org/</a> for more information and examples.
+- name: --verbose
+  summary: Increase logging verbosity. Use --debug for full debug logs.
+metadata:
+  doc_source_url_repo: https://github.com/Azure/azure-cli/blob/dev/
+  ms.date: 11/19/2020
+  description: Manage Azure NetApp Files (ANF) Account active directories.

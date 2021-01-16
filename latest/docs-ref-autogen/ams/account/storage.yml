@@ -1,0 +1,112 @@
+### YamlMime:AzureCLIGroup
+uid: az_ams_account_storage
+name: az ams account storage
+summary: Manage storage for an Azure Media Services account.
+description: ''
+directCommands:
+- uid: az_ams_account_storage_add
+  name: az ams account storage add
+  summary: Attach a secondary storage to an Azure Media Services account.
+  description: ''
+  syntax: >-
+    az ams account storage add [--account-name]
+                               [--ids]
+                               [--name]
+                               [--resource-group]
+                               [--subscription]
+  optionalParameters:
+  - name: --account-name -a
+    summary: The name of the Azure Media Services account.
+    description: ''
+  - name: --ids
+    summary: One or more resource IDs (space-delimited). It should be a complete resource ID containing all information of 'Resource Id' arguments. You should provide either --ids or other 'Resource Id' arguments.
+    description: ''
+  - name: --name -n
+    summary: The name or resource ID of the secondary storage account to detach from the Azure Media Services account.
+    description: ''
+  - name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/ams/_help.py
+- uid: az_ams_account_storage_remove
+  name: az ams account storage remove
+  summary: Detach a secondary storage from an Azure Media Services account.
+  description: ''
+  syntax: >-
+    az ams account storage remove [--account-name]
+                                  [--ids]
+                                  [--name]
+                                  [--resource-group]
+                                  [--subscription]
+  optionalParameters:
+  - name: --account-name -a
+    summary: The name of the Azure Media Services account.
+    description: ''
+  - name: --ids
+    summary: One or more resource IDs (space-delimited). It should be a complete resource ID containing all information of 'Resource Id' arguments. You should provide either --ids or other 'Resource Id' arguments.
+    description: ''
+  - name: --name -n
+    summary: The name or resource ID of the secondary storage account to detach from the Azure Media Services account.
+    description: ''
+  - name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/ams/_help.py
+- uid: az_ams_account_storage_sync_storage_keys
+  name: az ams account storage sync-storage-keys
+  summary: Synchronize storage account keys for a storage account associated with an Azure Media Services account.
+  description: ''
+  syntax: >-
+    az ams account storage sync-storage-keys --id
+                                             [--account-name]
+                                             [--ids]
+                                             [--resource-group]
+                                             [--subscription]
+  requiredParameters:
+  - isRequired: true
+    name: --id
+    summary: The ID of the storage account resource.
+    description: ''
+  optionalParameters:
+  - name: --account-name -a
+    summary: The name of the Azure Media Services account.
+    description: ''
+  - name: --ids
+    summary: One or more resource IDs (space-delimited). It should be a complete resource ID containing all information of 'Resource Id' arguments. You should provide either --ids or other 'Resource Id' arguments.
+    description: ''
+  - name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/ams/_help.py
+commands:
+- az_ams_account_storage_add
+- az_ams_account_storage_remove
+- az_ams_account_storage_sync_storage_keys
+globalParameters:
+- name: --debug
+  summary: Increase logging verbosity to show all debug logs.
+- name: --help -h
+  summary: Show this help message and exit.
+- name: --only-show-errors
+  summary: Only show errors, suppressing warnings.
+- name: --output -o
+  defaultValue: json
+  parameterValueGroup: json, jsonc, table, tsv
+  summary: Output format.
+- name: --query
+  summary: JMESPath query string. See <a href="http://jmespath.org/">http://jmespath.org/</a> for more information and examples.
+- name: --verbose
+  summary: Increase logging verbosity. Use --debug for full debug logs.
+metadata:
+  doc_source_url_repo: https://github.com/Azure/azure-cli/blob/dev/
+  ms.date: 07/28/2020
+  description: Manage storage for an Azure Media Services account.

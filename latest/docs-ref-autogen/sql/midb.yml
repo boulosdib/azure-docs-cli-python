@@ -1,0 +1,277 @@
+### YamlMime:AzureCLIGroup
+uid: az_sql_midb
+name: az sql midb
+summary: Manage SQL managed instance databases.
+description: ''
+directCommands:
+- uid: az_sql_midb_create
+  name: az sql midb create
+  summary: Create a managed database.
+  description: ''
+  syntax: >-
+    az sql midb create --managed-instance
+                       --name
+                       --resource-group
+                       [--collation]
+                       [--no-wait]
+                       [--subscription]
+  examples:
+  - summary: Create a managed database with specified collation
+    syntax: az sql midb create -g mygroup --mi myinstance -n mymanageddb --collation Latin1_General_100_CS_AS_SC
+  requiredParameters:
+  - isRequired: true
+    name: --managed-instance --mi
+    summary: Name of the Azure SQL managed instance.
+    description: ''
+  - isRequired: true
+    name: --name -n
+    summary: The name of the Azure SQL Managed Database.
+    description: ''
+  - isRequired: true
+    name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  optionalParameters:
+  - name: --collation
+    summary: 'The collation of the Azure SQL Managed Database collation to use, e.g.: SQL_Latin1_General_CP1_CI_AS or Latin1_General_100_CS_AS_SC.'
+    description: ''
+  - name: --no-wait
+    summary: Do not wait for the long-running operation to finish.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/sql/_help.py
+- uid: az_sql_midb_delete
+  name: az sql midb delete
+  summary: Delete a managed database.
+  description: ''
+  syntax: >-
+    az sql midb delete [--ids]
+                       [--managed-instance]
+                       [--name]
+                       [--no-wait]
+                       [--resource-group]
+                       [--subscription]
+                       [--yes]
+  examples:
+  - summary: Delete a managed database
+    syntax: az sql midb delete -g mygroup --mi myinstance -n mymanageddb --yes
+  optionalParameters:
+  - name: --ids
+    summary: One or more resource IDs (space-delimited). It should be a complete resource ID containing all information of 'Resource Id' arguments. You should provide either --ids or other 'Resource Id' arguments.
+    description: ''
+  - name: --managed-instance --mi
+    summary: Name of the Azure SQL managed instance.
+    description: ''
+  - name: --name -n
+    summary: The name of the Azure SQL Managed Database.
+    description: ''
+  - name: --no-wait
+    summary: Do not wait for the long-running operation to finish.
+    description: ''
+  - name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  - name: --yes -y
+    summary: Do not prompt for confirmation.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/sql/_help.py
+- uid: az_sql_midb_list
+  name: az sql midb list
+  summary: List managed databases on a managed instance.
+  description: ''
+  syntax: >-
+    az sql midb list [--ids]
+                     [--managed-instance]
+                     [--query-examples]
+                     [--resource-group]
+                     [--subscription]
+  examples:
+  - summary: List managed databases on a managed instance
+    syntax: az sql midb list -g mygroup --mi myinstance
+  optionalParameters:
+  - name: --ids
+    summary: One or more resource IDs (space-delimited). It should be a complete resource ID containing all information of 'Resource Id' arguments. You should provide either --ids or other 'Resource Id' arguments.
+    description: ''
+  - name: --managed-instance --mi
+    summary: Name of the Azure SQL managed instance.
+    description: ''
+  - name: --query-examples
+    summary: Recommend JMESPath string for you. You can copy one of the query and paste it after --query parameter within double quotation marks to see the results. You can add one or more positional keywords so that we can give suggestions based on these key words.
+    description: ''
+  - name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/sql/_help.py
+- uid: az_sql_midb_list_deleted
+  name: az sql midb list-deleted
+  summary: List restorable deleted managed databases.
+  description: ''
+  syntax: >-
+    az sql midb list-deleted [--ids]
+                             [--managed-instance]
+                             [--resource-group]
+                             [--subscription]
+  examples:
+  - summary: List all restorable deleted managed databases on Managed Instance .
+    syntax: az sql midb list-deleted -g mygroup --mi myinstance
+  optionalParameters:
+  - name: --ids
+    summary: One or more resource IDs (space-delimited). It should be a complete resource ID containing all information of 'Resource Id' arguments. You should provide either --ids or other 'Resource Id' arguments.
+    description: ''
+  - name: --managed-instance --mi
+    summary: Name of the Azure SQL managed instance.
+    description: ''
+  - name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/sql/_help.py
+- uid: az_sql_midb_restore
+  name: az sql midb restore
+  summary: Restore a managed database.
+  description: ''
+  syntax: >-
+    az sql midb restore --dest-name
+                        --time
+                        [--deleted-time]
+                        [--dest-mi]
+                        [--dest-resource-group]
+                        [--ids]
+                        [--managed-instance]
+                        [--name]
+                        [--no-wait]
+                        [--resource-group]
+                        [--subscription]
+  examples:
+  - summary: Restore a live managed database using Point in time restore
+    syntax: az sql midb restore -g mygroup --mi myinstance -n mymanageddb --dest-name targetmidb --time "2018-05-20T05:34:22"
+  - summary: Restore a dropped managed database using Point in time restore
+    syntax: az sql midb restore -g mygroup --mi myinstance -n mymanageddb --dest-name targetmidb --time "2018-05-20T05:34:22" --deleted-time "2018-05-20T05:34:22"
+  - summary: Restore a live managed database from another instance using Point in time restore
+    syntax: az sql midb restore -g mygroup --mi myinstance -n mymanageddb --dest-name targetmidb --time "2018-05-20T05:34:22" --dest-mi targetmi --dest-resource-group targetrg
+  requiredParameters:
+  - isRequired: true
+    name: --dest-name
+    summary: Name of the managed database that will be created as the restore destination.
+    description: ''
+  - isRequired: true
+    name: --time -t
+    summary: "The point in time of the source database that will be restored to create the new database. Must be greater than or equal to the source database's earliestRestoreDate value. Time should be in following format: \"YYYY-MM-DDTHH:MM:SS\"."
+    description: ''
+  optionalParameters:
+  - name: --deleted-time
+    summary: If specified, restore from a deleted database instead of from an existing database. Must match the deleted time of a deleted database on the source Managed Instance.
+    description: ''
+  - name: --dest-mi
+    summary: Name of the managed instance to restore managed database to. This can be same managed instance, or another managed instance on same subscription. When not specified it defaults to source managed instance.
+    description: ''
+  - name: --dest-resource-group
+    summary: Name of the resource group of the managed instance to restore managed database to. When not specified it defaults to source resource group.
+    description: ''
+  - name: --ids
+    summary: One or more resource IDs (space-delimited). It should be a complete resource ID containing all information of 'Resource Id' arguments. You should provide either --ids or other 'Resource Id' arguments.
+    description: ''
+  - name: --managed-instance --mi
+    summary: Name of the Azure SQL managed instance.
+    description: ''
+  - name: --name -n
+    summary: The name of the Azure SQL Managed Database.
+    description: ''
+  - name: --no-wait
+    summary: Do not wait for the long-running operation to finish.
+    description: ''
+  - name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/sql/_help.py
+- uid: az_sql_midb_show
+  name: az sql midb show
+  summary: Get the details for a managed database.
+  description: ''
+  syntax: >-
+    az sql midb show [--ids]
+                     [--managed-instance]
+                     [--name]
+                     [--query-examples]
+                     [--resource-group]
+                     [--subscription]
+  examples:
+  - summary: Get the details for a managed database
+    syntax: az sql midb show -g mygroup --mi myinstance -n mymanageddb
+  optionalParameters:
+  - name: --ids
+    summary: One or more resource IDs (space-delimited). It should be a complete resource ID containing all information of 'Resource Id' arguments. You should provide either --ids or other 'Resource Id' arguments.
+    description: ''
+  - name: --managed-instance --mi
+    summary: Name of the Azure SQL managed instance.
+    description: ''
+  - name: --name -n
+    summary: The name of the Azure SQL Managed Database.
+    description: ''
+  - name: --query-examples
+    summary: Recommend JMESPath string for you. You can copy one of the query and paste it after --query parameter within double quotation marks to see the results. You can add one or more positional keywords so that we can give suggestions based on these key words.
+    description: ''
+  - name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/sql/_help.py
+commands:
+- az_sql_midb_create
+- az_sql_midb_delete
+- az_sql_midb_list
+- az_sql_midb_list_deleted
+- az_sql_midb_log_replay
+- az_sql_midb_log_replay_complete
+- az_sql_midb_log_replay_show
+- az_sql_midb_log_replay_start
+- az_sql_midb_log_replay_stop
+- az_sql_midb_log_replay_wait
+- az_sql_midb_ltr_backup
+- az_sql_midb_ltr_backup_delete
+- az_sql_midb_ltr_backup_list
+- az_sql_midb_ltr_backup_restore
+- az_sql_midb_ltr_backup_show
+- az_sql_midb_ltr_backup_wait
+- az_sql_midb_ltr_policy
+- az_sql_midb_ltr_policy_set
+- az_sql_midb_ltr_policy_show
+- az_sql_midb_restore
+- az_sql_midb_short_term_retention_policy
+- az_sql_midb_short_term_retention_policy_set
+- az_sql_midb_short_term_retention_policy_show
+- az_sql_midb_show
+globalParameters:
+- name: --debug
+  summary: Increase logging verbosity to show all debug logs.
+- name: --help -h
+  summary: Show this help message and exit.
+- name: --only-show-errors
+  summary: Only show errors, suppressing warnings.
+- name: --output -o
+  defaultValue: json
+  parameterValueGroup: json, jsonc, table, tsv
+  summary: Output format.
+- name: --query
+  summary: JMESPath query string. See <a href="http://jmespath.org/">http://jmespath.org/</a> for more information and examples.
+- name: --verbose
+  summary: Increase logging verbosity. Use --debug for full debug logs.
+metadata:
+  doc_source_url_repo: https://github.com/Azure/azure-cli/blob/dev/
+  ms.date: 10/22/2020
+  description: Manage SQL managed instance databases.

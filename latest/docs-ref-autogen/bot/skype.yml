@@ -1,0 +1,153 @@
+### YamlMime:AzureCLIGroup
+uid: az_bot_skype
+name: az bot skype
+summary: Manage the Skype Channel on a bot.
+description: ''
+directCommands:
+- uid: az_bot_skype_create
+  name: az bot skype create
+  summary: Create the Skype Channel on a bot.
+  description: ''
+  syntax: >-
+    az bot skype create --name
+                        --resource-group
+                        [--add-disabled {false, true}]
+                        [--calling-web-hook]
+                        [--enable-calling {false, true}]
+                        [--enable-groups {false, true}]
+                        [--enable-media-cards {false, true}]
+                        [--enable-messaging {false, true}]
+                        [--enable-screen-sharing {false, true}]
+                        [--enable-video {false, true}]
+                        [--groups-mode]
+                        [--subscription]
+  examples:
+  - summary: Create the Skype Channel for a bot with messaging and screen sharing enabled
+    syntax: >-
+      az bot skype create -n botName -g MyResourceGroup --enable-messaging
+
+      --enable-screen-sharing
+  requiredParameters:
+  - isRequired: true
+    name: --name -n
+    summary: The resource name of the bot. Bot name must be between 4 and 42 characters in length. Bot name can only have the following characters -, a - z, A - Z, 0 - 9, and _.
+    description: ''
+  - isRequired: true
+    name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  optionalParameters:
+  - name: --add-disabled
+    parameterValueGroup: false, true
+    summary: Add the channel in a disabled state.
+    description: ''
+  - name: --calling-web-hook
+    summary: The calling web hook to use on Skype.
+    description: ''
+  - name: --enable-calling
+    parameterValueGroup: false, true
+    summary: Enable calling on Skype.
+    description: ''
+  - name: --enable-groups
+    parameterValueGroup: false, true
+    summary: Enable groups on Skype.
+    description: ''
+  - name: --enable-media-cards
+    parameterValueGroup: false, true
+    summary: Enable media cards on Skype.
+    description: ''
+  - name: --enable-messaging
+    parameterValueGroup: false, true
+    summary: Enable messaging on Skype.
+    description: ''
+  - name: --enable-screen-sharing
+    parameterValueGroup: false, true
+    summary: Enable screen sharing on Skype.
+    description: ''
+  - name: --enable-video
+    parameterValueGroup: false, true
+    summary: Enable video on Skype.
+    description: ''
+  - name: --groups-mode
+    summary: Select groups mode on Skype.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/botservice/_help.py
+- uid: az_bot_skype_delete
+  name: az bot skype delete
+  summary: Delete the Skype Channel on a bot.
+  description: ''
+  syntax: >-
+    az bot skype delete --name
+                        --resource-group
+                        [--subscription]
+  requiredParameters:
+  - isRequired: true
+    name: --name -n
+    summary: The resource name of the bot. Bot name must be between 4 and 42 characters in length. Bot name can only have the following characters -, a - z, A - Z, 0 - 9, and _.
+    description: ''
+  - isRequired: true
+    name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  optionalParameters:
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/botservice/_help.py
+- uid: az_bot_skype_show
+  name: az bot skype show
+  summary: Get details of the Skype Channel on a bot.
+  description: ''
+  syntax: >-
+    az bot skype show --name
+                      --resource-group
+                      [--query-examples]
+                      [--subscription]
+                      [--with-secrets {false, true}]
+  requiredParameters:
+  - isRequired: true
+    name: --name -n
+    summary: The resource name of the bot. Bot name must be between 4 and 42 characters in length. Bot name can only have the following characters -, a - z, A - Z, 0 - 9, and _.
+    description: ''
+  - isRequired: true
+    name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  optionalParameters:
+  - name: --query-examples
+    summary: Recommend JMESPath string for you. You can copy one of the query and paste it after --query parameter within double quotation marks to see the results. You can add one or more positional keywords so that we can give suggestions based on these key words.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  - name: --with-secrets
+    parameterValueGroup: false, true
+    summary: Show secrets in response for the channel.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/botservice/_help.py
+commands:
+- az_bot_skype_create
+- az_bot_skype_delete
+- az_bot_skype_show
+globalParameters:
+- name: --debug
+  summary: Increase logging verbosity to show all debug logs.
+- name: --help -h
+  summary: Show this help message and exit.
+- name: --only-show-errors
+  summary: Only show errors, suppressing warnings.
+- name: --output -o
+  defaultValue: json
+  parameterValueGroup: json, jsonc, table, tsv
+  summary: Output format.
+- name: --query
+  summary: JMESPath query string. See <a href="http://jmespath.org/">http://jmespath.org/</a> for more information and examples.
+- name: --verbose
+  summary: Increase logging verbosity. Use --debug for full debug logs.
+metadata:
+  doc_source_url_repo: https://github.com/Azure/azure-cli/blob/dev/
+  ms.date: 12/11/2019
+  description: Manage the Skype Channel on a bot.

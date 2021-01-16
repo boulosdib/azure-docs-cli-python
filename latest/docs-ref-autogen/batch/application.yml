@@ -1,0 +1,202 @@
+### YamlMime:AzureCLIGroup
+uid: az_batch_application
+name: az batch application
+summary: Manage Batch applications.
+description: ''
+directCommands:
+- uid: az_batch_application_create
+  name: az batch application create
+  summary: Adds an application to the specified Batch account.
+  description: ''
+  syntax: >-
+    az batch application create --application-name
+                                --name
+                                --resource-group
+                                [--parameters]
+                                [--subscription]
+  requiredParameters:
+  - isRequired: true
+    name: --application-name
+    summary: The name of the application. This must be unique within the account.
+    description: ''
+  - isRequired: true
+    name: --name -n
+    summary: Name of the Batch account.
+    description: ''
+  - isRequired: true
+    name: --resource-group -g
+    summary: Name of the resource group.
+    description: ''
+  optionalParameters:
+  - name: --parameters
+    summary: The parameters for the request.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/batch/_help.py
+- uid: az_batch_application_delete
+  name: az batch application delete
+  summary: Deletes an application.
+  description: ''
+  syntax: >-
+    az batch application delete --application-name
+                                --name
+                                --resource-group
+                                [--subscription]
+                                [--yes]
+  requiredParameters:
+  - isRequired: true
+    name: --application-name
+    summary: The name of the application. This must be unique within the account.
+    description: ''
+  - isRequired: true
+    name: --name -n
+    summary: Name of the Batch account.
+    description: ''
+  - isRequired: true
+    name: --resource-group -g
+    summary: Name of the resource group.
+    description: ''
+  optionalParameters:
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  - name: --yes -y
+    summary: Do not prompt for confirmation.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/batch/_help.py
+- uid: az_batch_application_list
+  name: az batch application list
+  summary: Lists all of the applications in the specified account.
+  description: ''
+  syntax: >-
+    az batch application list --name
+                              --resource-group
+                              [--maxresults]
+                              [--query-examples]
+                              [--subscription]
+  requiredParameters:
+  - isRequired: true
+    name: --name -n
+    summary: Name of the Batch account.
+    description: ''
+  - isRequired: true
+    name: --resource-group -g
+    summary: Name of the resource group.
+    description: ''
+  optionalParameters:
+  - name: --maxresults
+    summary: The maximum number of items to return in the response.
+    description: ''
+  - name: --query-examples
+    summary: Recommend JMESPath string for you. You can copy one of the query and paste it after --query parameter within double quotation marks to see the results. You can add one or more positional keywords so that we can give suggestions based on these key words.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/batch/_help.py
+- uid: az_batch_application_set
+  name: az batch application set
+  summary: Update properties for a Batch application.
+  description: ''
+  syntax: >-
+    az batch application set --application-name
+                             --name
+                             --resource-group
+                             [--allow-updates]
+                             [--default-version]
+                             [--display-name]
+                             [--subscription]
+  requiredParameters:
+  - isRequired: true
+    name: --application-name
+    summary: The name of the application.
+    description: ''
+  - isRequired: true
+    name: --name -n
+    summary: Name of the Batch account.
+    description: ''
+  - isRequired: true
+    name: --resource-group -g
+    summary: Name of the resource group.
+    description: ''
+  optionalParameters:
+  - name: --allow-updates
+    summary: Specify to indicate whether packages within the application may be overwritten using the same version string. Specify either 'true' or 'false' to update the property.
+    description: ''
+  - name: --default-version
+    summary: The package to use if a client requests the application but does not specify a version. This property can only be set to the name of an existing package.
+    description: ''
+  - name: --display-name
+    summary: The display name for the application.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/batch/_help.py
+- uid: az_batch_application_show
+  name: az batch application show
+  summary: Gets information about the specified application.
+  description: ''
+  syntax: >-
+    az batch application show --application-name
+                              --name
+                              --resource-group
+                              [--query-examples]
+                              [--subscription]
+  requiredParameters:
+  - isRequired: true
+    name: --application-name
+    summary: The name of the application. This must be unique within the account.
+    description: ''
+  - isRequired: true
+    name: --name -n
+    summary: Name of the Batch account.
+    description: ''
+  - isRequired: true
+    name: --resource-group -g
+    summary: Name of the resource group.
+    description: ''
+  optionalParameters:
+  - name: --query-examples
+    summary: Recommend JMESPath string for you. You can copy one of the query and paste it after --query parameter within double quotation marks to see the results. You can add one or more positional keywords so that we can give suggestions based on these key words.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/batch/_help.py
+commands:
+- az_batch_application_create
+- az_batch_application_delete
+- az_batch_application_list
+- az_batch_application_package
+- az_batch_application_package_activate
+- az_batch_application_package_create
+- az_batch_application_package_delete
+- az_batch_application_package_list
+- az_batch_application_package_show
+- az_batch_application_set
+- az_batch_application_show
+- az_batch_application_summary
+- az_batch_application_summary_list
+- az_batch_application_summary_show
+globalParameters:
+- name: --debug
+  summary: Increase logging verbosity to show all debug logs.
+- name: --help -h
+  summary: Show this help message and exit.
+- name: --only-show-errors
+  summary: Only show errors, suppressing warnings.
+- name: --output -o
+  defaultValue: json
+  parameterValueGroup: json, jsonc, table, tsv
+  summary: Output format.
+- name: --query
+  summary: JMESPath query string. See <a href="http://jmespath.org/">http://jmespath.org/</a> for more information and examples.
+- name: --verbose
+  summary: Increase logging verbosity. Use --debug for full debug logs.
+metadata:
+  doc_source_url_repo: https://github.com/Azure/azure-cli/blob/dev/
+  ms.date: 12/07/2020
+  description: Manage Batch applications.

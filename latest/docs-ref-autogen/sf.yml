@@ -1,0 +1,94 @@
+### YamlMime:AzureCLIGroup
+uid: az_sf
+name: az sf
+summary: Manage and administer Azure Service Fabric clusters.
+description: ''
+commands:
+- az_sf_application
+- az_sf_application_certificate
+- az_sf_application_certificate_add
+- az_sf_application_create
+- az_sf_application_delete
+- az_sf_application_list
+- az_sf_application_show
+- az_sf_application_update
+- az_sf_application_type
+- az_sf_application_type_create
+- az_sf_application_type_delete
+- az_sf_application_type_list
+- az_sf_application_type_show
+- az_sf_application_type_version
+- az_sf_application_type_version_create
+- az_sf_application_type_version_delete
+- az_sf_application_type_version_list
+- az_sf_application_type_version_show
+- az_sf_cluster
+- az_sf_cluster_certificate
+- az_sf_cluster_certificate_add
+- az_sf_cluster_certificate_remove
+- az_sf_cluster_client_certificate
+- az_sf_cluster_client_certificate_add
+- az_sf_cluster_client_certificate_remove
+- az_sf_cluster_create
+- az_sf_cluster_durability
+- az_sf_cluster_durability_update
+- az_sf_cluster_list
+- az_sf_cluster_node
+- az_sf_cluster_node_add
+- az_sf_cluster_node_remove
+- az_sf_cluster_node_type
+- az_sf_cluster_node_type_add
+- az_sf_cluster_reliability
+- az_sf_cluster_reliability_update
+- az_sf_cluster_setting
+- az_sf_cluster_setting_remove
+- az_sf_cluster_setting_set
+- az_sf_cluster_show
+- az_sf_cluster_upgrade_type
+- az_sf_cluster_upgrade_type_set
+- az_sf_managed_cluster
+- az_sf_managed_cluster_client_certificate
+- az_sf_managed_cluster_client_certificate_add
+- az_sf_managed_cluster_client_certificate_delete
+- az_sf_managed_cluster_create
+- az_sf_managed_cluster_delete
+- az_sf_managed_cluster_list
+- az_sf_managed_cluster_show
+- az_sf_managed_cluster_update
+- az_sf_managed_node_type
+- az_sf_managed_node_type_create
+- az_sf_managed_node_type_delete
+- az_sf_managed_node_type_list
+- az_sf_managed_node_type_node
+- az_sf_managed_node_type_node_delete
+- az_sf_managed_node_type_node_reimage
+- az_sf_managed_node_type_node_restart
+- az_sf_managed_node_type_show
+- az_sf_managed_node_type_update
+- az_sf_managed_node_type_vm_extension
+- az_sf_managed_node_type_vm_extension_add
+- az_sf_managed_node_type_vm_extension_delete
+- az_sf_managed_node_type_vm_secret
+- az_sf_managed_node_type_vm_secret_add
+- az_sf_service
+- az_sf_service_create
+- az_sf_service_delete
+- az_sf_service_list
+- az_sf_service_show
+globalParameters:
+- name: --debug
+  summary: Increase logging verbosity to show all debug logs.
+- name: --help -h
+  summary: Show this help message and exit.
+- name: --only-show-errors
+  summary: Only show errors, suppressing warnings.
+- name: --output -o
+  defaultValue: json
+  parameterValueGroup: json, jsonc, table, tsv
+  summary: Output format.
+- name: --query
+  summary: JMESPath query string. See <a href="http://jmespath.org/">http://jmespath.org/</a> for more information and examples.
+- name: --verbose
+  summary: Increase logging verbosity. Use --debug for full debug logs.
+metadata:
+  description: Manage and administer Azure Service Fabric clusters.

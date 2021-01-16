@@ -1,4 +1,3 @@
-log/
 obj/
 azurecli/
 _site/
@@ -6,5 +5,8 @@ _site/
 _themes/
 _themes.MSDN.Modern/
 _themes.VS.Modern/
+.vscode
 
 .openpublishing.buildcore.ps1
+*.swp
+

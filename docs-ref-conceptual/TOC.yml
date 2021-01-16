@@ -1,0 +1,163 @@
+- name: Azure CLI
+  href: index.yml
+- name: Overview
+  items:
+  - name: What is Azure CLI?
+    href: what-is-azure-cli.md
+    displayName: overview, intro, introduction
+  - name: Service List
+    href: azure-services-the-azure-cli-can-manage.md
+    displayName: >-
+      into, introduction, matrix, azure products, products supported, services
+      App Configuration, App Service, Active Directory (AD), Backup, Cognitive Search, 
+      Cosmos DB, Data Lake Storage, Database, MariaDB, MySQL, PostgreSQL, PostgreSQL, 
+      DevOps, DevTest Labs, DNS, Functions, IoT, IoT Central, IoT Edge, IoT Hub, 
+      Kubernetes Service (AKS), Lab Services, Machine Learning, Managed Applications, 
+      Private Link, Resource Manager, Spring Cloud, SQL Database, Batch, Cognitive Services, 
+      Container Instances, Container Registry, Data Lake Analytics, Event Grid, Event Hubs, 
+      HDInsight, Key Vault, Load Balancer, Managed Disks, Media Services, 
+      Notification Hubs, Service Bus, Service Fabric, Storage Accounts, Traffic Manager, 
+      Virtual Machine Scale Sets, Virtual Network, Compute, Networking, Internet of Things, 
+      Developer Tools, Databases, Analytics, Management and Governance, Hybrid, Storage, Security, AI + Machine Learning
+  - name: Get started
+    href: get-started-with-azure-cli.md
+    displayName: intro, introduction, sign in, signin, log in, login, find, interactive, feedback
+  - name: Popular articles
+    href: popular-articles-using-the-azure-cli.md
+    displayName:  >-
+      virtual machines, Azure Kubernetes Service (AKS), 
+      Batch, Azure CLI (Core), Resource Manager, Key Vault, Stack Hub, Functions, 
+      Database, Event Hubs, App Configuration, App Config, Germany, Security, Governance, 
+      Insights, IoT, Internet of Things, DevOps, Virtual Network, Compute, Networking, 
+      Developer Tools, Databases, Analytics, Management and Governance, Hybrid, Storage, Security, AI, 
+      AI + Machine Learning, Linux, Windows, Ubuntu, automation, application, web app, script, certificate
+  - name: Reference Types and Status
+    href: reference-types-and-status.md
+    displayName: core, extension, status, GA, public preview, experimental
+  - name: Release notes
+    href: release-notes-azure-cli.md?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+  - name: CLI Versioning
+    href: cli-versioning-identifiers.md
+    displayName: version, classic, 2.0, 1.0, xplat
+- name: Install, update and run
+  items:
+  - name: Install
+    href: install-azure-cli.md
+    items:
+    - name: Install - Windows
+      href: install-azure-cli-windows.md
+      displayName: install, powershell, cmd, command prompt
+    - name: Install - macOS
+      href: install-azure-cli-macos.md
+      displayName: install, macos, brew, homebrew, osx, os x, mac
+    - name: Install - Linux
+      href: install-azure-cli-linux.md
+      displayName: install, script, unix, bsd, linux, lfs, wsl, slackware, ubuntu, debian, mint, opensuse, suse, sles, leap, tumbleweed, rhel, redhat, red hat, fedora
+  - name: Update
+    href: update-azure-cli.md
+    displayName: update, upgrade
+  - name: Run Azure CLI in a Docker container
+    href: run-azure-cli-docker.md
+    displayName: linux, unix, container, image
+  - name: Run Azure Cloud Shell using Bash
+    href: /azure/cloud-shell/quickstart
+    displayName: bash, Powershell
+  - name: Sign in
+    href: authenticate-azure-cli.md
+    displayName: >-
+        sign in, signin, log in, login, credentials, msi, managed identity,
+        tenant, subscription, region, certificate, service principal,
+        authenticate
+- name: Tutorials
+  items:
+  - name: Create persisted parameters
+    href: param-persist-tutorial.md
+    displayName: local-context, local context, az config persist-param, az config
+  - name: Create a service principal
+    href: create-an-azure-service-principal-azure-cli.md
+    displayName: >-
+       automation, application, web app, script, certificate, sign in,
+       signin, log in, login, devops, dev ops, itpro, it pro, role,
+       aad, authentication, authenticate
+  - name: Create virtual machines
+    href: azure-cli-vm-tutorial.yml
+- name: Samples
+  items:
+  - name: Linux VMs
+    href: /azure/virtual-machines/linux/cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+    displayName: virtual machines
+  - name: Windows VMs
+    href: /azure/virtual-machines/windows/cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+    displayName: virtual machines
+  - name: Web Apps
+    href: /azure/app-service-web/app-service-cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+  - name: Functions
+    href: /azure/azure-functions/functions-cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+    displayName: serverless, lambda
+  - name: SQL Database
+    href: /azure/sql-database/sql-database-cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+  - name: PostgreSQL
+    href: /azure/postgresql/sample-scripts-azure-cli?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+  - name: MySQL
+    href: /azure/mysql/sample-scripts-azure-cli?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+  - name: Cosmos DB
+    href: /azure/cosmos-db/cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+    displayName: database, nosql, mongodb, couchdb
+  - name: Batch
+    href: /azure/batch/cli-samples?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+- name: How-to guides
+  items:
+  - name: Use CLI effectively
+    href: use-cli-effectively.md
+  - name: Query results
+    href: query-azure-cli.md
+    displayName: >-
+      filter, search, format, output, variable, scripting, array, dictionary, map,
+      object, json, jsonc, jmespath
+  - name: Format output
+    href: format-output-azure-cli.md
+    displayName: table, yaml, json, jsonc, tsv, ascii, configure, default
+  - name: Configure settings
+    href: azure-cli-Configuration.md
+    displayName: configure, defaults, environment, variables
+  - name: Work with persisted parameters
+    href: param-persist-howto.md
+    displayName: local-context, local context, az config persist-param, az config
+  - name: Manage subscriptions
+    href: manage-azure-subscriptions-azure-cli.md
+    displayName: tenant, user, sign in, signin, log in, login, authenticate, authentication, accounts
+  - name: Work in Interactive mode
+    href: interactive-azure-cli.md
+  - name: Work with multiple clouds
+    href: manage-clouds-azure-cli.md?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+    displayName: region, china, germany, government, governance, stack
+  - name: Deploy with templates
+    items:
+    - name: Use deployment templates
+      href: /azure/azure-resource-manager/resource-group-template-deploy-cli?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+    - name: Export deployment templates
+      href: /azure/azure-resource-manager/resource-manager-export-template-cli?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+  - name: Work with extensions
+    items:
+    - name: Overview
+      href: azure-cli-extensions-overview.md
+    - name: Available extensions
+      href: azure-cli-extensions-list.md
+    - name: Alias extension
+      href: azure-cli-extension-alias.md
+    - name: Deploy from private templates
+      href: /azure/azure-resource-manager/resource-manager-cli-sas-token?toc=%2fcli%2fazure%2ftoc.json&bc=%2fcli%2fazure%2fbreadcrumb%2ftoc.json
+- name: Reference Summaries
+  items:
+  - name: Azure Data Share
+    href: azure-cli-reference-for-data-share.md
+    displayName: Azure Data Share, az datashare, Data Share
+  - name: Azure IoT
+    href: azure-cli-reference-for-IoT.md
+    displayName: IoT, az iot, az dt, az maps, az timeseriesinsights
+  - name: Azure Monitor
+    href: azure-cli-reference-for-monitor.md
+    display: Azure Monitor, az monitor, insights, application insights, log analytics, az app-insights, az log-analytics
+  - name: Azure Network
+    href: azure-cli-reference-for-network.md
+    display: peering, asg, appliance, dns, endpoint, nat, nic, route, vmware, vnet, cross connection, express-route, vhub, vpn, vrouter, vwan, ib, ip, front-door, gateway, traffic, bastion, ddos, firewall

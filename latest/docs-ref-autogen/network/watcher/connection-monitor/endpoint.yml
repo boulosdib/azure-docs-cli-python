@@ -1,0 +1,206 @@
+### YamlMime:AzureCLIGroup
+uid: az_network_watcher_connection_monitor_endpoint
+name: az network watcher connection-monitor endpoint
+summary: Manage endpoint of a connection monitor.
+description: ''
+directCommands:
+- uid: az_network_watcher_connection_monitor_endpoint_add
+  name: az network watcher connection-monitor endpoint add
+  summary: Add an endpoint to a connection monitor.
+  description: ''
+  syntax: >-
+    az network watcher connection-monitor endpoint add --connection-monitor
+                                                       --location
+                                                       --name
+                                                       [--address]
+                                                       [--address-exclude]
+                                                       [--address-include]
+                                                       [--coverage-level {AboveAverage, Average, BelowAverage, Default, Full, Low}]
+                                                       [--dest-test-groups]
+                                                       [--filter-item]
+                                                       [--filter-type {Include}]
+                                                       [--resource-id]
+                                                       [--source-test-groups]
+                                                       [--subscription]
+                                                       [--type {AzureSubnet, AzureVM, AzureVNet, ExternalAddress, MMAWorkspaceMachine, MMAWorkspaceNetwork}]
+  examples:
+  - summary: Add an external address as a destination endpoint
+    syntax: az network watcher connection-monitor endpoint add --connection-monitor MyConnectionMonitor --location westus --name MyExternalEndpoint --address "bing.com" --dest-test-groups DefaultTestGroup --type ExternalAddress
+  - summary: Add an Azure VM as a source endpoint
+    syntax: az network watcher connection-monitor endpoint add --connection-monitor MyConnectionMonitor --location westus --name MyVMEndpoint --resource-id MyVMResourceID --source-test-groups DefaultTestGroup --type AzureVM
+  - summary: Add a Subnet as a source endpoint with addresses excluded
+    syntax: az network watcher connection-monitor endpoint add --connection-monitor MyConnectionMonitor --location westus --name MySubnetEndpoint --resource-id MySubnetID --source-test-groups DefaultTestGroup --type AzureSubnet --address-exclude 10.0.0.25 10.0.0.30 --coverage-level BelowAverage
+  requiredParameters:
+  - isRequired: true
+    name: --connection-monitor
+    summary: Connection monitor name.
+    description: ''
+  - isRequired: true
+    name: --location -l
+    summary: 'Location. Values from: `az account list-locations`. You can configure the default location using `az configure --defaults location=<location>`.'
+    description: ''
+  - isRequired: true
+    name: --name -n
+    summary: The name of the connection monitor endpoint.
+    description: ''
+  optionalParameters:
+  - name: --address
+    summary: Address of the connection monitor endpoint (IP or domain name).
+    description: ''
+  - name: --address-exclude
+    summary: List of address of the endpoint item which needs to be included to the endpoint scope.
+    description: ''
+  - name: --address-include
+    summary: List of address of the endpoint item which needs to be included to the endpoint scope.
+    description: ''
+  - name: --coverage-level
+    parameterValueGroup: AboveAverage, Average, BelowAverage, Default, Full, Low
+    summary: Test coverage for the endpoint.
+    description: ''
+  - name: --dest-test-groups
+    summary: Space-separated list of names for test group to reference as destination.
+    description: ''
+  - name: --filter-item
+    summary: "List of property=value pairs to define filter items. Property currently include: type, address. Property value of type supports 'AgentAddress' only now."
+    description: ''
+  - name: --filter-type
+    parameterValueGroup: Include
+    summary: The behavior of the endpoint filter. Currently only 'Include' is supported.
+    description: ''
+  - name: --resource-id
+    summary: Resource ID of the connection monitor endpoint.
+    description: ''
+  - name: --source-test-groups
+    summary: Space-separated list of names for test group to reference as source.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  - name: --type
+    parameterValueGroup: AzureSubnet, AzureVM, AzureVNet, ExternalAddress, MMAWorkspaceMachine, MMAWorkspaceNetwork
+    summary: The endpoint type.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/network/_help.py
+- uid: az_network_watcher_connection_monitor_endpoint_list
+  name: az network watcher connection-monitor endpoint list
+  summary: List all endpoints form a connection monitor.
+  description: ''
+  syntax: >-
+    az network watcher connection-monitor endpoint list --connection-monitor
+                                                        --location
+                                                        [--query-examples]
+                                                        [--subscription]
+  examples:
+  - summary: List all endpoints form a connection monitor. (autogenerated)
+    syntax: az network watcher connection-monitor endpoint list --connection-monitor MyConnectionMonitor --location westus2
+  requiredParameters:
+  - isRequired: true
+    name: --connection-monitor
+    summary: Connection monitor name.
+    description: ''
+  - isRequired: true
+    name: --location -l
+    summary: 'Location. Values from: `az account list-locations`. You can configure the default location using `az configure --defaults location=<location>`.'
+    description: ''
+  optionalParameters:
+  - name: --query-examples
+    summary: Recommend JMESPath string for you. You can copy one of the query and paste it after --query parameter within double quotation marks to see the results. You can add one or more positional keywords so that we can give suggestions based on these key words.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/network/_help.py
+- uid: az_network_watcher_connection_monitor_endpoint_remove
+  name: az network watcher connection-monitor endpoint remove
+  summary: Remove an endpoint from a connection monitor.
+  description: ''
+  syntax: >-
+    az network watcher connection-monitor endpoint remove --connection-monitor
+                                                          --location
+                                                          --name
+                                                          [--subscription]
+                                                          [--test-groups]
+  examples:
+  - summary: Remove endpoint from all test groups of a connection monitor
+    syntax: az network watcher connection-monitor endpoint remove --connection-monitor MyConnectionMonitor --location westus --name MyEndpoint
+  - summary: Remove endpoint from two test groups of a connection monitor
+    syntax: az network watcher connection-monitor endpoint remove --connection-monitor MyConnectionMonitor --location westus --name MyEndpoint --test-groups DefaultTestGroup HealthCheckTestGroup
+  requiredParameters:
+  - isRequired: true
+    name: --connection-monitor
+    summary: Connection monitor name.
+    description: ''
+  - isRequired: true
+    name: --location -l
+    summary: 'Location. Values from: `az account list-locations`. You can configure the default location using `az configure --defaults location=<location>`.'
+    description: ''
+  - isRequired: true
+    name: --name -n
+    summary: The name of the connection monitor endpoint.
+    description: ''
+  optionalParameters:
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  - name: --test-groups
+    summary: Space-separated list of names of test group which only need to be affected if specified.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/network/_help.py
+- uid: az_network_watcher_connection_monitor_endpoint_show
+  name: az network watcher connection-monitor endpoint show
+  summary: Show an endpoint from a connection monitor.
+  description: ''
+  syntax: >-
+    az network watcher connection-monitor endpoint show --connection-monitor
+                                                        --location
+                                                        --name
+                                                        [--query-examples]
+                                                        [--subscription]
+  examples:
+  - summary: Show an endpoint from a connection monitor. (autogenerated)
+    syntax: az network watcher connection-monitor endpoint show --connection-monitor MyConnectionMonitor --location westus2 --name myconnectionmonitorendpoint --subscription MySubscription
+  requiredParameters:
+  - isRequired: true
+    name: --connection-monitor
+    summary: Connection monitor name.
+    description: ''
+  - isRequired: true
+    name: --location -l
+    summary: 'Location. Values from: `az account list-locations`. You can configure the default location using `az configure --defaults location=<location>`.'
+    description: ''
+  - isRequired: true
+    name: --name -n
+    summary: The name of the connection monitor endpoint.
+    description: ''
+  optionalParameters:
+  - name: --query-examples
+    summary: Recommend JMESPath string for you. You can copy one of the query and paste it after --query parameter within double quotation marks to see the results. You can add one or more positional keywords so that we can give suggestions based on these key words.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/network/_help.py
+commands:
+- az_network_watcher_connection_monitor_endpoint_add
+- az_network_watcher_connection_monitor_endpoint_list
+- az_network_watcher_connection_monitor_endpoint_remove
+- az_network_watcher_connection_monitor_endpoint_show
+globalParameters:
+- name: --debug
+  summary: Increase logging verbosity to show all debug logs.
+- name: --help -h
+  summary: Show this help message and exit.
+- name: --only-show-errors
+  summary: Only show errors, suppressing warnings.
+- name: --output -o
+  defaultValue: json
+  parameterValueGroup: json, jsonc, table, tsv
+  summary: Output format.
+- name: --query
+  summary: JMESPath query string. See <a href="http://jmespath.org/">http://jmespath.org/</a> for more information and examples.
+- name: --verbose
+  summary: Increase logging verbosity. Use --debug for full debug logs.
+metadata:
+  doc_source_url_repo: https://github.com/Azure/azure-cli/blob/dev/
+  ms.date: 12/20/2020
+  description: Manage endpoint of a connection monitor.

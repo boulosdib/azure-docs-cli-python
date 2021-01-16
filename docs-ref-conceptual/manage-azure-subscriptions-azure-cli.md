@@ -1,48 +1,58 @@
 ---
-title: Manage Azure subscriptions with Azure CLI 2.0
-description: Manage Azure subscriptions with Azure CLI 2.0 on Linux, Mac, or Windows.
-keywords: Azure CLI 2.0, Linux, Mac, Windows, OS X, subscription
-author: kamaljit
-ms.author: routlaw
-manager: douge
-ms.date: 02/27/2017
-ms.topic: article
-ms.prod: azure
-ms.technology: azure
+title: Manage Azure subscriptions with the Azure CLI
+description: Manage Azure subscriptions with the Azure CLI.
+author: dbradish-microsoft
+ms.author: dbradish
+manager: barbkess
+ms.date: 09/09/2018
+ms.topic: conceptual
+ms.service: azure-cli
 ms.devlang: azurecli
-ms.service: multiple
-ms.assetid: 98fb955e-6dbf-47e2-80ac-170d6d95cb70
+ms.custom: devx-track-azurecli
 ---
 
-# Manage multiple Azure subscriptions
+# Use multiple Azure subscriptions
 
-If you are brand new to Azure, you probably only have a single subscription.
-But if you have been using Azure for a while, you may have created multiple Azure subscriptions.
-If so, you can configure Azure CLI 2.0 to execute commands against a particular subscription.
+Most Azure users will only ever have a single subscription. However, if you are part of more than one organization or your organization has
+divided up access to certain resources across groupings, you may have multiple subscriptions within Azure. The CLI supports selecting a subscription
+both globally and per command.
 
-1. Get a list of all subscriptions in your account.
+For detailed information on subscriptions, billing, and cost management, see the [billing and cost management documentation](/azure/billing/).
 
-   ```azurecli
-   az account list --output table
-   ```
+## Tenants, users, and subscriptions
 
-   ```Output
-   Name                                         CloudName    SubscriptionId                        State     IsDefault
-   -------------------------------------------  -----------  ------------------------------------  --------  -----------
-   My Production Subscription                   AzureCloud   XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX  Enabled
-   My DevTest Subscription                      AzureCloud   XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX  Enabled   True
-   My Demos                                     AzureCloud   XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX  Enabled
-   ```
+You might have some confusion over the difference between tenants, users, and subscriptions within Azure. A _tenant_ is the Azure Active Directory
+entity that encompasses a whole organization. This tenant has at least one _subscription_ and _user_. A user is an individual and is associated
+with only one tenant, the organization that they belong to. Users are those accounts that sign in to Azure to create, manage, and use resources.
+A user may have access to multiple _subscriptions_, which are the agreements with Microsoft to use cloud services, including Azure. Every resource
+is associated with a subscription.
 
-1. Set the default.
- 
-   ```azurecli
-   az account set --subscription "My Demos"
-   ```
+To learn more about the differences between tenants, users, and subscriptions, see the
+[Azure cloud terminology dictionary](/azure/azure-glossary-cloud-terminology).  To learn how to add a new subscription to your Azure Active
+Directory tenant, see
+[Associate or add an Azure subscription to your Azure Active Directory tenant](/azure/active-directory/active-directory-how-subscriptions-associated-directory).
+To learn how to sign in to a specific tenant, see [Sign in with Azure CLI](./authenticate-azure-cli.md).
 
-   > [!NOTE]
-   > The `--subscription` parameter takes either the subscription name or the subscription ID.
+## Change the active subscription
 
-You can verify the change by running the `az account list --output table` command again.
+To access the resources for a subscription, switch your active subscription or use the `--subscription` argument. Switching your subscription
+for all commands is done with [az account set](/cli/azure/account#az-account-set).
 
-Once you set your default subscription, all subsequent Azure CLI commands run against this subscription.
+To switch your active subscription:
+
+1. Get a list of your subscriptions with the [az account list](/cli/azure/account#az-account-list) command:
+
+    ```azurecli-interactive
+    az account list --output table
+    ```
+2. Use `az account set` with the subscription ID or name you want to switch to.
+
+    ```azurecli-interactive
+    az account set --subscription "My Demos"
+    ```
+
+To run only a single command with a different subscription, use the `--subscription` argument. This argument takes either a subscription ID or subscription name:
+
+```azurecli-interactive
+az vm create --subscription "My Demos" --resource-group MyGroup --name NewVM --image Ubuntu
+```

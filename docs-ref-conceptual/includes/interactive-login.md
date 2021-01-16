@@ -1,18 +1,21 @@
 ---
-ms.assetid: 16dae88b-a4b8-4bfd-aa3c-25245a9ad975
+author: sptramer
+ms.author: sttramer
+manager: carmonm
+ms.date: 09/07/2018
+ms.topic: include
 ---
+1. Run the `login` command.
 
-1. Run the login command.
-
-    ```azurecli
+    ```azurecli-interactive
     az login
     ```
 
-   You get a code to use in the next step. 
+    If the CLI can open your default browser, it will do so and load an Azure sign-in page.
 
-1. Use a web browser to open the page [https://aka.ms/devicelogin](https://aka.ms/devicelogin)
-    and enter the code to authenticate.
+    Otherwise, open a browser page at [https://aka.ms/devicelogin](https://aka.ms/devicelogin) and enter the
+    authorization code displayed in your terminal.
 
-    You are prompted to log in using your credentials.
+    If no web browser is available or the web browser fails to open, use device code flow with **az login --use-device-code**.
 
-1. Log in.
+2. Sign in with your account credentials in the browser.

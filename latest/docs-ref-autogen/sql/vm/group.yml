@@ -1,0 +1,270 @@
+### YamlMime:AzureCLIGroup
+uid: az_sql_vm_group
+name: az sql vm group
+summary: Manage SQL virtual machine groups.
+description: ''
+directCommands:
+- uid: az_sql_vm_group_create
+  name: az sql vm group create
+  summary: Creates a SQL virtual machine group.
+  description: ''
+  syntax: >-
+    az sql vm group create --domain-fqdn
+                           --image-offer
+                           --image-sku {Developer, Enterprise}
+                           --name
+                           --operator-acc
+                           --resource-group
+                           --service-acc
+                           --storage-account
+                           [--bootstrap-acc]
+                           [--fsw-path]
+                           [--location]
+                           [--ou-path]
+                           [--sa-key]
+                           [--subscription]
+                           [--tags]
+  examples:
+  - summary: Create a SQL virtual machine group for SQL2016-WS2016 Enterprise virtual machines.
+    syntax: az sql vm group create -n sqlvmgroup -l eastus -g myresourcegroup --image-offer SQL2016-WS2016 --image-sku Enterprise --domain-fqdn Domain.com --operator-acc testop --service-acc testservice --sa-key {PublicKey} --storage-account 'https://storacc.blob.core.windows.net/'
+  requiredParameters:
+  - isRequired: true
+    name: --domain-fqdn -f
+    summary: Fully qualified name of the domain.
+    description: ''
+  - isRequired: true
+    name: --image-offer -i
+    summary: SQL image offer. Examples may include SQL2016-WS2016, SQL2017-WS2016.
+    description: ''
+  - isRequired: true
+    name: --image-sku -s
+    parameterValueGroup: Developer, Enterprise
+    summary: SQL image sku.
+    description: ''
+  - isRequired: true
+    name: --name -n
+    summary: Name of the SQL virtual machine group.
+    description: ''
+  - isRequired: true
+    name: --operator-acc -p
+    summary: Account name used for operating cluster i.e. will be part of administrators group on all the participating virtual machines in the cluster.
+    description: ''
+  - isRequired: true
+    name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - isRequired: true
+    name: --service-acc -e
+    summary: Account name under which SQL service will run on all participating SQL virtual machines in the cluster.
+    description: ''
+  - isRequired: true
+    name: --storage-account -u
+    summary: Storage account url of the witness storage account.
+    description: ''
+  optionalParameters:
+  - name: --bootstrap-acc
+    summary: Account name used for creating cluster (at minimum needs permissions to 'Create Computer Objects' in domain).
+    description: ''
+  - name: --fsw-path
+    summary: Optional path for fileshare witness.
+    description: ''
+  - name: --location -l
+    summary: Location. If not provided, group will be created in the same reosurce group location.You can configure the default location using `az configure --defaults location=<location>`.
+    description: ''
+  - name: --ou-path
+    summary: 'Organizational Unit path in which the nodes and cluster will be present. Example: OU=WSCluster,DC=testdomain,DC=com.'
+    description: ''
+  - name: --sa-key -k
+    summary: Primary key of the witness storage account.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  - name: --tags
+    summary: 'Space-separated tags: key[=value] [key[=value] ...]. Use "" to clear existing tags.'
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/sql/_help.py
+- uid: az_sql_vm_group_delete
+  name: az sql vm group delete
+  summary: Deletes a SQL virtual machine group.
+  description: ''
+  syntax: >-
+    az sql vm group delete [--ids]
+                           [--name]
+                           [--resource-group]
+                           [--subscription]
+                           [--yes]
+  optionalParameters:
+  - name: --ids
+    summary: One or more resource IDs (space-delimited). It should be a complete resource ID containing all information of 'Resource Id' arguments. You should provide either --ids or other 'Resource Id' arguments.
+    description: ''
+  - name: --name -n
+    summary: Name of the SQL virtual machine group.
+    description: ''
+  - name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  - name: --yes -y
+    summary: Do not prompt for confirmation.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/sql/_help.py
+- uid: az_sql_vm_group_list
+  name: az sql vm group list
+  summary: Lists all SQL virtual machine groups in a resource group or subscription.
+  description: ''
+  syntax: >-
+    az sql vm group list [--query-examples]
+                         [--resource-group]
+                         [--subscription]
+  optionalParameters:
+  - name: --query-examples
+    summary: Recommend JMESPath string for you. You can copy one of the query and paste it after --query parameter within double quotation marks to see the results. You can add one or more positional keywords so that we can give suggestions based on these key words.
+    description: ''
+  - name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/sql/_help.py
+- uid: az_sql_vm_group_show
+  name: az sql vm group show
+  summary: Gets a SQL virtual machine group.
+  description: ''
+  syntax: >-
+    az sql vm group show [--ids]
+                         [--name]
+                         [--query-examples]
+                         [--resource-group]
+                         [--subscription]
+  optionalParameters:
+  - name: --ids
+    summary: One or more resource IDs (space-delimited). It should be a complete resource ID containing all information of 'Resource Id' arguments. You should provide either --ids or other 'Resource Id' arguments.
+    description: ''
+  - name: --name -n
+    summary: Name of the SQL virtual machine group.
+    description: ''
+  - name: --query-examples
+    summary: Recommend JMESPath string for you. You can copy one of the query and paste it after --query parameter within double quotation marks to see the results. You can add one or more positional keywords so that we can give suggestions based on these key words.
+    description: ''
+  - name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/sql/_help.py
+- uid: az_sql_vm_group_update
+  name: az sql vm group update
+  summary: Updates a SQL virtual machine group if there are not SQL virtual machines attached to the group.
+  description: ''
+  syntax: >-
+    az sql vm group update [--add]
+                           [--bootstrap-acc]
+                           [--domain-fqdn]
+                           [--force-string]
+                           [--fsw-path]
+                           [--ids]
+                           [--name]
+                           [--operator-acc]
+                           [--ou-path]
+                           [--remove]
+                           [--resource-group]
+                           [--sa-key]
+                           [--service-acc]
+                           [--set]
+                           [--storage-account]
+                           [--subscription]
+                           [--tags]
+  examples:
+  - summary: Update an empty SQL virtual machine group operator account.
+    syntax: az sql vm group update -n sqlvmgroup -g myresourcegroup --operator-acc testop
+  - summary: Update an empty SQL virtual machine group storage account and key.
+    syntax: az sql vm group update -n sqlvmgroup -g myresourcegroup --sa-key {PublicKey} --storage-account 'https://newstoracc.blob.core.windows.net/'
+  optionalParameters:
+  - name: --add
+    summary: 'Add an object to a list of objects by specifying a path and key value pairs.  Example: --add property.listProperty <key=value, string or JSON string>.'
+    description: ''
+  - name: --bootstrap-acc
+    summary: Account name used for creating cluster (at minimum needs permissions to 'Create Computer Objects' in domain).
+    description: ''
+  - name: --domain-fqdn -f
+    summary: Fully qualified name of the domain.
+    description: ''
+  - name: --force-string
+    summary: When using 'set' or 'add', preserve string literals instead of attempting to convert to JSON.
+    description: ''
+  - name: --fsw-path
+    summary: Optional path for fileshare witness.
+    description: ''
+  - name: --ids
+    summary: One or more resource IDs (space-delimited). It should be a complete resource ID containing all information of 'Resource Id' arguments. You should provide either --ids or other 'Resource Id' arguments.
+    description: ''
+  - name: --name -n
+    summary: Name of the SQL virtual machine group.
+    description: ''
+  - name: --operator-acc -p
+    summary: Account name used for operating cluster i.e. will be part of administrators group on all the participating virtual machines in the cluster.
+    description: ''
+  - name: --ou-path
+    summary: 'Organizational Unit path in which the nodes and cluster will be present. Example: OU=WSCluster,DC=testdomain,DC=com.'
+    description: ''
+  - name: --remove
+    summary: 'Remove a property or an element from a list.  Example: --remove property.list <indexToRemove> OR --remove propertyToRemove.'
+    description: ''
+  - name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - name: --sa-key -k
+    summary: Primary key of the witness storage account.
+    description: ''
+  - name: --service-acc -e
+    summary: Account name under which SQL service will run on all participating SQL virtual machines in the cluster.
+    description: ''
+  - name: --set
+    summary: 'Update an object by specifying a property path and value to set.  Example: --set property1.property2=<value>.'
+    description: ''
+  - name: --storage-account -u
+    summary: Storage account url of the witness storage account.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  - name: --tags
+    summary: 'Space-separated tags: key[=value] [key[=value] ...]. Use "" to clear existing tags.'
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/sql/_help.py
+commands:
+- az_sql_vm_group_ag_listener
+- az_sql_vm_group_ag_listener_create
+- az_sql_vm_group_ag_listener_delete
+- az_sql_vm_group_ag_listener_list
+- az_sql_vm_group_ag_listener_show
+- az_sql_vm_group_ag_listener_update
+- az_sql_vm_group_create
+- az_sql_vm_group_delete
+- az_sql_vm_group_list
+- az_sql_vm_group_show
+- az_sql_vm_group_update
+globalParameters:
+- name: --debug
+  summary: Increase logging verbosity to show all debug logs.
+- name: --help -h
+  summary: Show this help message and exit.
+- name: --only-show-errors
+  summary: Only show errors, suppressing warnings.
+- name: --output -o
+  defaultValue: json
+  parameterValueGroup: json, jsonc, table, tsv
+  summary: Output format.
+- name: --query
+  summary: JMESPath query string. See <a href="http://jmespath.org/">http://jmespath.org/</a> for more information and examples.
+- name: --verbose
+  summary: Increase logging verbosity. Use --debug for full debug logs.
+metadata:
+  doc_source_url_repo: https://github.com/Azure/azure-cli/blob/dev/
+  ms.date: 10/22/2020
+  description: Manage SQL virtual machine groups.

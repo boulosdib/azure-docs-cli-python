@@ -1,0 +1,135 @@
+### YamlMime:AzureCLIGroup
+uid: az_bot_facebook
+name: az bot facebook
+summary: Manage the Facebook Channel on a bot.
+description: ''
+directCommands:
+- uid: az_bot_facebook_create
+  name: az bot facebook create
+  summary: Create the Facebook Channel on a bot.
+  description: ''
+  syntax: >-
+    az bot facebook create --appid
+                           --name
+                           --page-id
+                           --resource-group
+                           --secret
+                           --token
+                           [--add-disabled {false, true}]
+                           [--subscription]
+  examples:
+  - summary: Create the Facebook Channel for a bot
+    syntax: >-
+      az bot facebook create -n botName -g MyResourceGroup --appid myAppId \
+
+      --page-id myPageId --secret mySecret --token myToken
+  requiredParameters:
+  - isRequired: true
+    name: --appid
+    summary: The Facebook application id.
+    description: ''
+  - isRequired: true
+    name: --name -n
+    summary: The resource name of the bot. Bot name must be between 4 and 42 characters in length. Bot name can only have the following characters -, a - z, A - Z, 0 - 9, and _.
+    description: ''
+  - isRequired: true
+    name: --page-id
+    summary: Page ID of the Facebook page to be used for the bot.
+    description: ''
+  - isRequired: true
+    name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - isRequired: true
+    name: --secret
+    summary: The Facebook application secret.
+    description: ''
+  - isRequired: true
+    name: --token
+    summary: The Facebook application access token.
+    description: ''
+  optionalParameters:
+  - name: --add-disabled
+    parameterValueGroup: false, true
+    summary: Add the channel in a disabled state.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/botservice/_help.py
+- uid: az_bot_facebook_delete
+  name: az bot facebook delete
+  summary: Delete the Facebook Channel on a bot.
+  description: ''
+  syntax: >-
+    az bot facebook delete --name
+                           --resource-group
+                           [--subscription]
+  requiredParameters:
+  - isRequired: true
+    name: --name -n
+    summary: The resource name of the bot. Bot name must be between 4 and 42 characters in length. Bot name can only have the following characters -, a - z, A - Z, 0 - 9, and _.
+    description: ''
+  - isRequired: true
+    name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  optionalParameters:
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/botservice/_help.py
+- uid: az_bot_facebook_show
+  name: az bot facebook show
+  summary: Get details of the Facebook Channel on a bot.
+  description: ''
+  syntax: >-
+    az bot facebook show --name
+                         --resource-group
+                         [--query-examples]
+                         [--subscription]
+                         [--with-secrets {false, true}]
+  requiredParameters:
+  - isRequired: true
+    name: --name -n
+    summary: The resource name of the bot. Bot name must be between 4 and 42 characters in length. Bot name can only have the following characters -, a - z, A - Z, 0 - 9, and _.
+    description: ''
+  - isRequired: true
+    name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  optionalParameters:
+  - name: --query-examples
+    summary: Recommend JMESPath string for you. You can copy one of the query and paste it after --query parameter within double quotation marks to see the results. You can add one or more positional keywords so that we can give suggestions based on these key words.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  - name: --with-secrets
+    parameterValueGroup: false, true
+    summary: Show secrets in response for the channel.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/botservice/_help.py
+commands:
+- az_bot_facebook_create
+- az_bot_facebook_delete
+- az_bot_facebook_show
+globalParameters:
+- name: --debug
+  summary: Increase logging verbosity to show all debug logs.
+- name: --help -h
+  summary: Show this help message and exit.
+- name: --only-show-errors
+  summary: Only show errors, suppressing warnings.
+- name: --output -o
+  defaultValue: json
+  parameterValueGroup: json, jsonc, table, tsv
+  summary: Output format.
+- name: --query
+  summary: JMESPath query string. See <a href="http://jmespath.org/">http://jmespath.org/</a> for more information and examples.
+- name: --verbose
+  summary: Increase logging verbosity. Use --debug for full debug logs.
+metadata:
+  doc_source_url_repo: https://github.com/Azure/azure-cli/blob/dev/
+  ms.date: 12/11/2019
+  description: Manage the Facebook Channel on a bot.

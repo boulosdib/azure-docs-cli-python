@@ -1,0 +1,66 @@
+### YamlMime:AzureCLIGroup
+uid: az_consumption_usage
+name: az consumption usage
+summary: Inspect the usage of Azure resources.
+description: ''
+directCommands:
+- uid: az_consumption_usage_list
+  name: az consumption usage list
+  summary: List the details of Azure resource consumption, either as an invoice or within a billing period.
+  description: ''
+  syntax: >-
+    az consumption usage list [--billing-period-name]
+                              [--end-date]
+                              [--include-additional-properties]
+                              [--include-meter-details]
+                              [--query-examples]
+                              [--start-date]
+                              [--subscription]
+                              [--top]
+  optionalParameters:
+  - name: --billing-period-name -p
+    summary: Name of the billing period to get the usage details that associate with.
+    description: ''
+  - name: --end-date -e
+    summary: End date (YYYY-MM-DD in UTC). If specified, also requires --start-date.
+    description: ''
+  - name: --include-additional-properties -a
+    summary: Include additional properties in the usages.
+    description: ''
+  - name: --include-meter-details -m
+    summary: Include meter details in the usages.
+    description: ''
+  - name: --query-examples
+    summary: Recommend JMESPath string for you. You can copy one of the query and paste it after --query parameter within double quotation marks to see the results. You can add one or more positional keywords so that we can give suggestions based on these key words.
+    description: ''
+  - name: --start-date -s
+    summary: Start date (YYYY-MM-DD in UTC). If specified, also requires --end-date.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  - name: --top -t
+    summary: 'Maximum number of items to return. Value range: 1-1000.'
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/consumption/_help.py
+commands:
+- az_consumption_usage_list
+globalParameters:
+- name: --debug
+  summary: Increase logging verbosity to show all debug logs.
+- name: --help -h
+  summary: Show this help message and exit.
+- name: --only-show-errors
+  summary: Only show errors, suppressing warnings.
+- name: --output -o
+  defaultValue: json
+  parameterValueGroup: json, jsonc, table, tsv
+  summary: Output format.
+- name: --query
+  summary: JMESPath query string. See <a href="http://jmespath.org/">http://jmespath.org/</a> for more information and examples.
+- name: --verbose
+  summary: Increase logging verbosity. Use --debug for full debug logs.
+metadata:
+  doc_source_url_repo: https://github.com/Azure/azure-cli/blob/dev/
+  ms.date: 09/16/2019
+  description: Inspect the usage of Azure resources.

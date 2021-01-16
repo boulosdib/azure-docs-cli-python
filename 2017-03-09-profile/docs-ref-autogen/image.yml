@@ -1,0 +1,41 @@
+### YamlMime:AzureCLIGroup
+uid: az_image
+name: az image
+summary: Manage custom virtual machine images.
+description: ''
+commands:
+- az_image_builder
+- az_image_builder_cancel
+- az_image_builder_create
+- az_image_builder_customizer
+- az_image_builder_customizer_add
+- az_image_builder_customizer_clear
+- az_image_builder_customizer_remove
+- az_image_builder_delete
+- az_image_builder_list
+- az_image_builder_output
+- az_image_builder_output_add
+- az_image_builder_output_clear
+- az_image_builder_output_remove
+- az_image_builder_run
+- az_image_builder_show
+- az_image_builder_show_runs
+- az_image_builder_update
+- az_image_builder_wait
+globalParameters:
+- name: --debug
+  summary: Increase logging verbosity to show all debug logs.
+- name: --help -h
+  summary: Show this help message and exit.
+- name: --only-show-errors
+  summary: Only show errors, suppressing warnings.
+- name: --output -o
+  defaultValue: json
+  parameterValueGroup: json, jsonc, table, tsv
+  summary: Output format.
+- name: --query
+  summary: JMESPath query string. See <a href="http://jmespath.org/">http://jmespath.org/</a> for more information and examples.
+- name: --verbose
+  summary: Increase logging verbosity. Use --debug for full debug logs.
+metadata:
+  description: Manage custom virtual machine images.

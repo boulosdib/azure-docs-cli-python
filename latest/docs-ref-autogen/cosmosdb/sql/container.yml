@@ -1,0 +1,302 @@
+### YamlMime:AzureCLIGroup
+uid: az_cosmosdb_sql_container
+name: az cosmosdb sql container
+summary: Manage Azure Cosmos DB SQL containers.
+description: ''
+directCommands:
+- uid: az_cosmosdb_sql_container_create
+  name: az cosmosdb sql container create
+  summary: Create an SQL container under an Azure Cosmos DB SQL database.
+  description: ''
+  syntax: >-
+    az cosmosdb sql container create --account-name
+                                     --database-name
+                                     --name
+                                     --partition-key-path
+                                     --resource-group
+                                     [--analytical-storage-ttl]
+                                     [--conflict-resolution-policy]
+                                     [--idx]
+                                     [--max-throughput]
+                                     [--partition-key-version]
+                                     [--subscription]
+                                     [--throughput]
+                                     [--ttl]
+                                     [--unique-key-policy]
+  examples:
+  - summary: Create an Azure Cosmos DB SQL container.
+    syntax: az cosmosdb sql container create -g MyResourceGroup -a MyAccount -d MyDatabase -n MyContainer --partition-key-path "/my/path" --idx @policy-file.json --ttl 1000 --throughput "700"
+  requiredParameters:
+  - isRequired: true
+    name: --account-name -a
+    summary: Cosmosdb account name.
+    description: ''
+  - isRequired: true
+    name: --database-name -d
+    summary: Database name.
+    description: ''
+  - isRequired: true
+    name: --name -n
+    summary: Container name.
+    description: ''
+  - isRequired: true
+    name: --partition-key-path -p
+    summary: Partition Key Path, e.g., '/address/zipcode'.
+    description: ''
+  - isRequired: true
+    name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  optionalParameters:
+  - name: --analytical-storage-ttl -t
+    summary: Analytical TTL, when analytical storage is enabled.
+    description: ''
+  - name: --conflict-resolution-policy -c
+    summary: 'Conflict Resolution Policy, you can enter it as a string or as a file, e.g., --conflict-resolution-policy @policy-file.json or --conflict-resolution-policy "{"mode": "lastWriterWins", "conflictResolutionPath": "/path"}".'
+    description: ''
+  - name: --idx
+    defaultValue: >-
+      {
+        "indexingMode": "consistent",
+        "automatic": true,
+        "includedPaths": [
+          {
+            "path": "/*"
+          }
+        ],
+        "excludedPaths": [
+          {
+            "path": "/\"_etag\"/?"
+          }
+        ]
+      }
+    summary: 'Indexing Policy, you can enter it as a string or as a file, e.g., --idx @policy-file.json or --idx "{"indexingMode": "consistent", "automatic": true, "includedPaths": [{"path": "/\*"}], "excludedPaths": [{ "path": "/headquarters/employees/?"}, { "path": "/\"_etag\"/?"}]}".'
+    description: ''
+  - name: --max-throughput
+    summary: The maximum throughput resource can scale to (RU/s). Provided when the resource is autoscale enabled. The minimum value can be 4000 (RU/s).
+    description: ''
+  - name: --partition-key-version
+    summary: The version of partition key.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  - name: --throughput
+    summary: The throughput of SQL container (RU/s). Default value is 400. Omit this parameter if the database has shared throughput unless the container should have dedicated throughput.
+    description: ''
+  - name: --ttl
+    summary: Default TTL. If the value is missing or set to "-1", items don’t expire. If the value is set to "n", items will expire "n" seconds after last modified time.
+    description: ''
+  - name: --unique-key-policy -u
+    summary: 'Unique Key Policy, you can enter it as a string or as a file, e.g., --unique-key-policy @policy-file.json or --unique-key-policy "{"uniqueKeys": [{"paths": ["/path/to/key1"]}, {"paths": ["/path/to/key2"]}]}".'
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/cosmosdb/_help.py
+- uid: az_cosmosdb_sql_container_delete
+  name: az cosmosdb sql container delete
+  summary: Delete the SQL container under an Azure Cosmos DB SQL database.
+  description: ''
+  syntax: >-
+    az cosmosdb sql container delete --account-name
+                                     --database-name
+                                     --name
+                                     --resource-group
+                                     [--subscription]
+                                     [--yes]
+  requiredParameters:
+  - isRequired: true
+    name: --account-name -a
+    summary: Cosmosdb account name.
+    description: ''
+  - isRequired: true
+    name: --database-name -d
+    summary: Database name.
+    description: ''
+  - isRequired: true
+    name: --name -n
+    summary: Container name.
+    description: ''
+  - isRequired: true
+    name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  optionalParameters:
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  - name: --yes -y
+    summary: Do not prompt for confirmation.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/cosmosdb/_help.py
+- uid: az_cosmosdb_sql_container_exists
+  name: az cosmosdb sql container exists
+  summary: Checks if an Azure Cosmos DB SQL container exists.
+  description: ''
+  syntax: >-
+    az cosmosdb sql container exists --account-name
+                                     --database-name
+                                     --name
+                                     --resource-group
+                                     [--subscription]
+  requiredParameters:
+  - isRequired: true
+    name: --account-name -a
+    summary: Cosmosdb account name.
+    description: ''
+  - isRequired: true
+    name: --database-name -d
+    summary: Database name.
+    description: ''
+  - isRequired: true
+    name: --name -n
+    summary: Container name.
+    description: ''
+  - isRequired: true
+    name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  optionalParameters:
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/cosmosdb/_help.py
+- uid: az_cosmosdb_sql_container_list
+  name: az cosmosdb sql container list
+  summary: List the SQL containers under an Azure Cosmos DB SQL database.
+  description: ''
+  syntax: >-
+    az cosmosdb sql container list --account-name
+                                   --database-name
+                                   --resource-group
+                                   [--query-examples]
+                                   [--subscription]
+  requiredParameters:
+  - isRequired: true
+    name: --account-name -a
+    summary: Cosmosdb account name.
+    description: ''
+  - isRequired: true
+    name: --database-name -d
+    summary: Database name.
+    description: ''
+  - isRequired: true
+    name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  optionalParameters:
+  - name: --query-examples
+    summary: Recommend JMESPath string for you. You can copy one of the query and paste it after --query parameter within double quotation marks to see the results. You can add one or more positional keywords so that we can give suggestions based on these key words.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/cosmosdb/_help.py
+- uid: az_cosmosdb_sql_container_show
+  name: az cosmosdb sql container show
+  summary: Show the details of a SQL container under an Azure Cosmos DB SQL database.
+  description: ''
+  syntax: >-
+    az cosmosdb sql container show --account-name
+                                   --database-name
+                                   --name
+                                   --resource-group
+                                   [--query-examples]
+                                   [--subscription]
+  requiredParameters:
+  - isRequired: true
+    name: --account-name -a
+    summary: Cosmosdb account name.
+    description: ''
+  - isRequired: true
+    name: --database-name -d
+    summary: Database name.
+    description: ''
+  - isRequired: true
+    name: --name -n
+    summary: Container name.
+    description: ''
+  - isRequired: true
+    name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  optionalParameters:
+  - name: --query-examples
+    summary: Recommend JMESPath string for you. You can copy one of the query and paste it after --query parameter within double quotation marks to see the results. You can add one or more positional keywords so that we can give suggestions based on these key words.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/cosmosdb/_help.py
+- uid: az_cosmosdb_sql_container_update
+  name: az cosmosdb sql container update
+  summary: Update an SQL container under an Azure Cosmos DB SQL database.
+  description: ''
+  syntax: >-
+    az cosmosdb sql container update --account-name
+                                     --database-name
+                                     --name
+                                     --resource-group
+                                     [--analytical-storage-ttl]
+                                     [--idx]
+                                     [--subscription]
+                                     [--ttl]
+  requiredParameters:
+  - isRequired: true
+    name: --account-name -a
+    summary: Cosmosdb account name.
+    description: ''
+  - isRequired: true
+    name: --database-name -d
+    summary: Database name.
+    description: ''
+  - isRequired: true
+    name: --name -n
+    summary: Container name.
+    description: ''
+  - isRequired: true
+    name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  optionalParameters:
+  - name: --analytical-storage-ttl -t
+    summary: Analytical TTL, when analytical storage is enabled.
+    description: ''
+  - name: --idx
+    summary: 'Indexing Policy, you can enter it as a string or as a file, e.g., --idx @policy-file.json or --idx "{"indexingMode": "consistent", "automatic": true, "includedPaths": [{"path": "/\*"}], "excludedPaths": [{ "path": "/headquarters/employees/?"}, { "path": "/\"_etag\"/?"}]}".'
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  - name: --ttl
+    summary: Default TTL. If the value is missing or set to "-1", items don’t expire. If the value is set to "n", items will expire "n" seconds after last modified time.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/cosmosdb/_help.py
+commands:
+- az_cosmosdb_sql_container_create
+- az_cosmosdb_sql_container_delete
+- az_cosmosdb_sql_container_exists
+- az_cosmosdb_sql_container_list
+- az_cosmosdb_sql_container_show
+- az_cosmosdb_sql_container_throughput
+- az_cosmosdb_sql_container_throughput_migrate
+- az_cosmosdb_sql_container_throughput_show
+- az_cosmosdb_sql_container_throughput_update
+- az_cosmosdb_sql_container_update
+globalParameters:
+- name: --debug
+  summary: Increase logging verbosity to show all debug logs.
+- name: --help -h
+  summary: Show this help message and exit.
+- name: --only-show-errors
+  summary: Only show errors, suppressing warnings.
+- name: --output -o
+  defaultValue: json
+  parameterValueGroup: json, jsonc, table, tsv
+  summary: Output format.
+- name: --query
+  summary: JMESPath query string. See <a href="http://jmespath.org/">http://jmespath.org/</a> for more information and examples.
+- name: --verbose
+  summary: Increase logging verbosity. Use --debug for full debug logs.
+metadata:
+  doc_source_url_repo: https://github.com/Azure/azure-cli/blob/dev/
+  ms.date: 10/23/2020
+  description: Manage Azure Cosmos DB SQL containers.

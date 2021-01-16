@@ -1,0 +1,310 @@
+### YamlMime:AzureCLIGroup
+uid: az_cosmosdb_collection
+name: az cosmosdb collection
+summary: Manage Azure Cosmos DB collections.
+description: ''
+directCommands:
+- uid: az_cosmosdb_collection_create
+  name: az cosmosdb collection create
+  summary: Creates an Azure Cosmos DB collection.
+  description: ''
+  syntax: >-
+    az cosmosdb collection create --collection-name
+                                  --db-name
+                                  [--default-ttl]
+                                  [--indexing-policy]
+                                  [--key]
+                                  [--name]
+                                  [--partition-key-path]
+                                  [--resource-group-name]
+                                  [--subscription]
+                                  [--throughput]
+                                  [--url-connection]
+  requiredParameters:
+  - isRequired: true
+    name: --collection-name -c
+    summary: Collection Name.
+    description: ''
+  - isRequired: true
+    name: --db-name -d
+    summary: Database Name.
+    description: ''
+  optionalParameters:
+  - name: --default-ttl
+    summary: Default TTL. Provide 0 to disable.
+    description: ''
+  - name: --indexing-policy
+    defaultValue: >-
+      {
+        "indexingMode": "consistent",
+        "automatic": true,
+        "includedPaths": [
+          {
+            "path": "/*"
+          }
+        ],
+        "excludedPaths": [
+          {
+            "path": "/\"_etag\"/?"
+          }
+        ]
+      }
+    summary: Indexing Policy, you can enter it as a string or as a file, e.g., --indexing-policy @policy-file.json).
+    description: ''
+  - name: --key
+    summary: Cosmos DB account key. Must be used in conjunction with cosmosdb account name or url-connection.
+    description: ''
+  - name: --name -n
+    summary: Cosmos DB account name. Must be used in conjunction with either name of the resource group or cosmosdb account key.
+    description: ''
+  - name: --partition-key-path
+    summary: Partition Key Path, e.g., '/properties/name'.
+    description: ''
+  - name: --resource-group-name -g
+    summary: Name of the resource group. Must be used in conjunction with cosmosdb account name.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  - name: --throughput
+    summary: Offer Throughput (RU/s).
+    description: ''
+  - name: --url-connection
+    summary: Cosmos DB account url connection. Must be used in conjunction with cosmosdb account key.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/cosmosdb/_help.py
+- uid: az_cosmosdb_collection_delete
+  name: az cosmosdb collection delete
+  summary: Deletes an Azure Cosmos DB collection.
+  description: ''
+  syntax: >-
+    az cosmosdb collection delete --collection-name
+                                  --db-name
+                                  [--key]
+                                  [--name]
+                                  [--resource-group-name]
+                                  [--subscription]
+                                  [--url-connection]
+                                  [--yes]
+  requiredParameters:
+  - isRequired: true
+    name: --collection-name -c
+    summary: Collection Name.
+    description: ''
+  - isRequired: true
+    name: --db-name -d
+    summary: Database Name.
+    description: ''
+  optionalParameters:
+  - name: --key
+    summary: Cosmos DB account key. Must be used in conjunction with cosmosdb account name or url-connection.
+    description: ''
+  - name: --name -n
+    summary: Cosmos DB account name. Must be used in conjunction with either name of the resource group or cosmosdb account key.
+    description: ''
+  - name: --resource-group-name -g
+    summary: Name of the resource group. Must be used in conjunction with cosmosdb account name.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  - name: --url-connection
+    summary: Cosmos DB account url connection. Must be used in conjunction with cosmosdb account key.
+    description: ''
+  - name: --yes -y
+    summary: Do not prompt for confirmation.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/cosmosdb/_help.py
+- uid: az_cosmosdb_collection_exists
+  name: az cosmosdb collection exists
+  summary: Returns a boolean indicating whether the collection exists.
+  description: ''
+  syntax: >-
+    az cosmosdb collection exists --collection-name
+                                  --db-name
+                                  [--key]
+                                  [--name]
+                                  [--resource-group-name]
+                                  [--subscription]
+                                  [--url-connection]
+  requiredParameters:
+  - isRequired: true
+    name: --collection-name -c
+    summary: Collection Name.
+    description: ''
+  - isRequired: true
+    name: --db-name -d
+    summary: Database Name.
+    description: ''
+  optionalParameters:
+  - name: --key
+    summary: Cosmos DB account key. Must be used in conjunction with cosmosdb account name or url-connection.
+    description: ''
+  - name: --name -n
+    summary: Cosmos DB account name. Must be used in conjunction with either name of the resource group or cosmosdb account key.
+    description: ''
+  - name: --resource-group-name -g
+    summary: Name of the resource group. Must be used in conjunction with cosmosdb account name.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  - name: --url-connection
+    summary: Cosmos DB account url connection. Must be used in conjunction with cosmosdb account key.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/cosmosdb/_help.py
+- uid: az_cosmosdb_collection_list
+  name: az cosmosdb collection list
+  summary: Lists all Azure Cosmos DB collections.
+  description: ''
+  syntax: >-
+    az cosmosdb collection list --db-name
+                                [--key]
+                                [--name]
+                                [--query-examples]
+                                [--resource-group-name]
+                                [--subscription]
+                                [--url-connection]
+  requiredParameters:
+  - isRequired: true
+    name: --db-name -d
+    summary: Database Name.
+    description: ''
+  optionalParameters:
+  - name: --key
+    summary: Cosmos DB account key. Must be used in conjunction with cosmosdb account name or url-connection.
+    description: ''
+  - name: --name -n
+    summary: Cosmos DB account name. Must be used in conjunction with either name of the resource group or cosmosdb account key.
+    description: ''
+  - name: --query-examples
+    summary: Recommend JMESPath string for you. You can copy one of the query and paste it after --query parameter within double quotation marks to see the results. You can add one or more positional keywords so that we can give suggestions based on these key words.
+    description: ''
+  - name: --resource-group-name -g
+    summary: Name of the resource group. Must be used in conjunction with cosmosdb account name.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  - name: --url-connection
+    summary: Cosmos DB account url connection. Must be used in conjunction with cosmosdb account key.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/cosmosdb/_help.py
+- uid: az_cosmosdb_collection_show
+  name: az cosmosdb collection show
+  summary: Shows an Azure Cosmos DB collection and its offer.
+  description: ''
+  syntax: >-
+    az cosmosdb collection show --collection-name
+                                --db-name
+                                [--key]
+                                [--name]
+                                [--query-examples]
+                                [--resource-group-name]
+                                [--subscription]
+                                [--url-connection]
+  requiredParameters:
+  - isRequired: true
+    name: --collection-name -c
+    summary: Collection Name.
+    description: ''
+  - isRequired: true
+    name: --db-name -d
+    summary: Database Name.
+    description: ''
+  optionalParameters:
+  - name: --key
+    summary: Cosmos DB account key. Must be used in conjunction with cosmosdb account name or url-connection.
+    description: ''
+  - name: --name -n
+    summary: Cosmos DB account name. Must be used in conjunction with either name of the resource group or cosmosdb account key.
+    description: ''
+  - name: --query-examples
+    summary: Recommend JMESPath string for you. You can copy one of the query and paste it after --query parameter within double quotation marks to see the results. You can add one or more positional keywords so that we can give suggestions based on these key words.
+    description: ''
+  - name: --resource-group-name -g
+    summary: Name of the resource group. Must be used in conjunction with cosmosdb account name.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  - name: --url-connection
+    summary: Cosmos DB account url connection. Must be used in conjunction with cosmosdb account key.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/cosmosdb/_help.py
+- uid: az_cosmosdb_collection_update
+  name: az cosmosdb collection update
+  summary: Updates an Azure Cosmos DB collection.
+  description: ''
+  syntax: >-
+    az cosmosdb collection update --collection-name
+                                  --db-name
+                                  [--default-ttl]
+                                  [--indexing-policy]
+                                  [--key]
+                                  [--name]
+                                  [--resource-group-name]
+                                  [--subscription]
+                                  [--throughput]
+                                  [--url-connection]
+  requiredParameters:
+  - isRequired: true
+    name: --collection-name -c
+    summary: Collection Name.
+    description: ''
+  - isRequired: true
+    name: --db-name -d
+    summary: Database Name.
+    description: ''
+  optionalParameters:
+  - name: --default-ttl
+    summary: Default TTL. Provide 0 to disable.
+    description: ''
+  - name: --indexing-policy
+    summary: Indexing Policy, you can enter it as a string or as a file, e.g., --indexing-policy @policy-file.json).
+    description: ''
+  - name: --key
+    summary: Cosmos DB account key. Must be used in conjunction with cosmosdb account name or url-connection.
+    description: ''
+  - name: --name -n
+    summary: Cosmos DB account name. Must be used in conjunction with either name of the resource group or cosmosdb account key.
+    description: ''
+  - name: --resource-group-name -g
+    summary: Name of the resource group. Must be used in conjunction with cosmosdb account name.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  - name: --throughput
+    summary: Offer Throughput (RU/s).
+    description: ''
+  - name: --url-connection
+    summary: Cosmos DB account url connection. Must be used in conjunction with cosmosdb account key.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/cosmosdb/_help.py
+commands:
+- az_cosmosdb_collection_create
+- az_cosmosdb_collection_delete
+- az_cosmosdb_collection_exists
+- az_cosmosdb_collection_list
+- az_cosmosdb_collection_show
+- az_cosmosdb_collection_update
+globalParameters:
+- name: --debug
+  summary: Increase logging verbosity to show all debug logs.
+- name: --help -h
+  summary: Show this help message and exit.
+- name: --only-show-errors
+  summary: Only show errors, suppressing warnings.
+- name: --output -o
+  defaultValue: json
+  parameterValueGroup: json, jsonc, table, tsv
+  summary: Output format.
+- name: --query
+  summary: JMESPath query string. See <a href="http://jmespath.org/">http://jmespath.org/</a> for more information and examples.
+- name: --verbose
+  summary: Increase logging verbosity. Use --debug for full debug logs.
+metadata:
+  doc_source_url_repo: https://github.com/Azure/azure-cli/blob/dev/
+  ms.date: 10/23/2020
+  description: Manage Azure Cosmos DB collections.

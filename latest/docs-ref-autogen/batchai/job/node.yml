@@ -1,0 +1,132 @@
+### YamlMime:AzureCLIGroup
+uid: az_batchai_job_node
+name: az batchai job node
+summary: Commands to work with nodes which executed a job.
+description: ''
+directCommands:
+- uid: az_batchai_job_node_exec
+  name: az batchai job node exec
+  summary: Executes a command line on a cluster's node used to execute the job with optional ports forwarding.
+  description: ''
+  syntax: >-
+    az batchai job node exec --experiment
+                             --job
+                             --resource-group
+                             --workspace
+                             [--address]
+                             [--exec]
+                             [--node-id]
+                             [--password]
+                             [--ssh-private-key]
+                             [--subscription]
+  examples:
+  - summary: Report a GPU state for a job's node.
+    syntax: >-
+      az batchai job node exec -g MyResourceGroup -w MyWorkspace -e MyExperiment -j MyJob \
+          --exec "nvidia-smi"
+  - summary: Report a snapshot of the current processes.
+    syntax: >-
+      az batchai job node exec -g MyResourceGroup -w MyWorkspace -e MyExperiment -j MyJob \
+          --exec "ps aux"
+  - summary: Forward local 9000 to port 9001 on the given node.
+    syntax: >-
+      az batchai job node exec -g MyResourceGroup -w MyWorkspace -e MyExperiment -j MyJob \
+          -n tvm-xxx -L 9000:localhost:9001
+  requiredParameters:
+  - isRequired: true
+    name: --experiment -e
+    summary: Name of experiment.
+    description: ''
+  - isRequired: true
+    name: --job -j
+    summary: Name of job.
+    description: ''
+  - isRequired: true
+    name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - isRequired: true
+    name: --workspace -w
+    summary: Name of workspace.
+    description: ''
+  optionalParameters:
+  - name: --address -L
+    summary: Specifies that connections to the given TCP port or Unix socket on the local (client) host are to be forwarded to the given host and port, or Unix socket, on the remote side. e.g. -L 8080:localhost:8080.
+    description: ''
+  - name: --exec
+    summary: Optional command line to be executed on the node. If not provided, the command will perform ports forwarding only.
+    description: ''
+  - name: --node-id -n
+    summary: ID of the node to forward the ports to. If not provided, the command will be executed on the first available node.
+    description: ''
+  - name: --password -p
+    summary: Optional password to establish SSH connection.
+    description: ''
+  - name: --ssh-private-key -k
+    summary: Optional SSH private key path to establish SSH connection. If omitted, the default SSH private key will be used.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/batchai/_help.py
+- uid: az_batchai_job_node_list
+  name: az batchai job node list
+  summary: List remote login information for nodes which executed the job.
+  description: List remote login information for currently existing (not deallocated) nodes on which the job was executed. You can ssh to a particular node using the provided public IP address and the port number. E.g. ssh <admin user name>@<public ip> -p <node's SSH port number>.
+  syntax: >-
+    az batchai job node list --experiment
+                             --job
+                             --resource-group
+                             --workspace
+                             [--query-examples]
+                             [--subscription]
+  examples:
+  - summary: List remote login information for a job nodes.
+    syntax: az batchai job node list -g MyResourceGroup -w MyWorkspace -e MyExperiment -j MyJob -o table
+  requiredParameters:
+  - isRequired: true
+    name: --experiment -e
+    summary: Name of experiment.
+    description: ''
+  - isRequired: true
+    name: --job -j
+    summary: Name of job.
+    description: ''
+  - isRequired: true
+    name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - isRequired: true
+    name: --workspace -w
+    summary: Name of workspace.
+    description: ''
+  optionalParameters:
+  - name: --query-examples
+    summary: Recommend JMESPath string for you. You can copy one of the query and paste it after --query parameter within double quotation marks to see the results. You can add one or more positional keywords so that we can give suggestions based on these key words.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/batchai/_help.py
+commands:
+- az_batchai_job_node_exec
+- az_batchai_job_node_list
+globalParameters:
+- name: --debug
+  summary: Increase logging verbosity to show all debug logs.
+- name: --help -h
+  summary: Show this help message and exit.
+- name: --only-show-errors
+  summary: Only show errors, suppressing warnings.
+- name: --output -o
+  defaultValue: json
+  parameterValueGroup: json, jsonc, table, tsv
+  summary: Output format.
+- name: --query
+  summary: JMESPath query string. See <a href="http://jmespath.org/">http://jmespath.org/</a> for more information and examples.
+- name: --verbose
+  summary: Increase logging verbosity. Use --debug for full debug logs.
+metadata:
+  doc_source_url_repo: https://github.com/Azure/azure-cli/blob/dev/
+  ms.date: 10/19/2019
+  description: Commands to work with nodes which executed a job.

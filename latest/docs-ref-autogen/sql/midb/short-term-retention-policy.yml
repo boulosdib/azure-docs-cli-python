@@ -1,0 +1,114 @@
+### YamlMime:AzureCLIGroup
+uid: az_sql_midb_short_term_retention_policy
+name: az sql midb short-term-retention-policy
+summary: Manage SQL Managed Instance database backup short term retention policy.
+description: ''
+directCommands:
+- uid: az_sql_midb_short_term_retention_policy_set
+  name: az sql midb short-term-retention-policy set
+  summary: Update short term retention for automated backups on a single database.
+  description: ''
+  syntax: >-
+    az sql midb short-term-retention-policy set --retention-days
+                                                [--deleted-time]
+                                                [--ids]
+                                                [--managed-instance]
+                                                [--name]
+                                                [--no-wait]
+                                                [--resource-group]
+                                                [--subscription]
+  examples:
+  - summary: Set backup short term retention for live managed database.
+    syntax: az sql midb short-term-retention-policy set -g mygroup --mi myinstance -n mymanageddb --retention-days retentionindays
+  - summary: Set backup short term retention for dropped managed database.
+    syntax: az sql midb short-term-retention-policy set -g mygroup --mi myinstance -n mymanageddb --deleted-time "2018-05-20T05:34:22" --retention-days retentionindays
+  requiredParameters:
+  - isRequired: true
+    name: --retention-days
+    summary: New backup short term retention policy in days.Valid policy for live database is 7-35 days, valid policy for dropped databases is 0-35 days.
+    description: ''
+  optionalParameters:
+  - name: --deleted-time
+    summary: If specified, updates retention days for a deleted database, instead of an existing database.Must match the deleted time of a deleted database on the source Managed Instance.
+    description: ''
+  - name: --ids
+    summary: One or more resource IDs (space-delimited). It should be a complete resource ID containing all information of 'Resource Id' arguments. You should provide either --ids or other 'Resource Id' arguments.
+    description: ''
+  - name: --managed-instance --mi
+    summary: Name of the Azure SQL managed instance.
+    description: ''
+  - name: --name -n
+    summary: The name of the Azure SQL Managed Database.
+    description: ''
+  - name: --no-wait
+    summary: Do not wait for the long-running operation to finish.
+    description: ''
+  - name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/sql/_help.py
+- uid: az_sql_midb_short_term_retention_policy_show
+  name: az sql midb short-term-retention-policy show
+  summary: Show short term retention for automated backups on a single database.
+  description: ''
+  syntax: >-
+    az sql midb short-term-retention-policy show [--deleted-time]
+                                                 [--ids]
+                                                 [--managed-instance]
+                                                 [--name]
+                                                 [--query-examples]
+                                                 [--resource-group]
+                                                 [--subscription]
+  examples:
+  - summary: Shows backup short term retention for live managed database.
+    syntax: az sql midb short-term-retention-policy show -g mygroup --mi myinstance -n mymanageddb
+  - summary: Show backup short term retention for dropped managed database.
+    syntax: az sql midb short-term-retention-policy show -g mygroup --mi myinstance -n mymanageddb --deleted-time "2018-05-20T05:34:22"
+  optionalParameters:
+  - name: --deleted-time
+    summary: If specified, shows retention days for a deleted database, instead of an existing database.Must match the deleted time of a deleted database on the source Managed Instance.
+    description: ''
+  - name: --ids
+    summary: One or more resource IDs (space-delimited). It should be a complete resource ID containing all information of 'Resource Id' arguments. You should provide either --ids or other 'Resource Id' arguments.
+    description: ''
+  - name: --managed-instance --mi
+    summary: Name of the Azure SQL managed instance.
+    description: ''
+  - name: --name -n
+    summary: The name of the Azure SQL Managed Database.
+    description: ''
+  - name: --query-examples
+    summary: Recommend JMESPath string for you. You can copy one of the query and paste it after --query parameter within double quotation marks to see the results. You can add one or more positional keywords so that we can give suggestions based on these key words.
+    description: ''
+  - name: --resource-group -g
+    summary: Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+    description: ''
+  - name: --subscription
+    summary: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    description: ''
+  editLink: https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/sql/_help.py
+commands:
+- az_sql_midb_short_term_retention_policy_set
+- az_sql_midb_short_term_retention_policy_show
+globalParameters:
+- name: --debug
+  summary: Increase logging verbosity to show all debug logs.
+- name: --help -h
+  summary: Show this help message and exit.
+- name: --only-show-errors
+  summary: Only show errors, suppressing warnings.
+- name: --output -o
+  defaultValue: json
+  parameterValueGroup: json, jsonc, table, tsv
+  summary: Output format.
+- name: --query
+  summary: JMESPath query string. See <a href="http://jmespath.org/">http://jmespath.org/</a> for more information and examples.
+- name: --verbose
+  summary: Increase logging verbosity. Use --debug for full debug logs.
+metadata:
+  doc_source_url_repo: https://github.com/Azure/azure-cli/blob/dev/
+  ms.date: 10/22/2020
+  description: Manage SQL Managed Instance database backup short term retention policy.
